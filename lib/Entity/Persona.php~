@@ -1,0 +1,27 @@
+<?php
+
+
+/**
+ * @Entity
+ * @Table(name="personas")
+ */
+class Persona
+{
+    /**
+     * @Id
+     * @Column(type="integer")
+     * @GeneratedValue
+     */
+    private $id;
+    
+    /**
+     * @Column(type="string", length=50)
+     */
+    protected $nombre;
+    
+    /**
+     *
+     * @Column(type="integer", length=2)
+     */
+    protected $edad;
+}

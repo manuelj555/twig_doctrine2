@@ -1,0 +1,16 @@
+{% extends "template.twig" %}
+
+{% block cuerpo %}
+<h1>{% block titulo 'Crear Persona' %}</h1>
+<div>
+    <form method="post">
+        <dl>
+            <dd><label>Nombre</label></dd>
+            <dt><input type="text" name="nombre" value="{{ persona.nombre }}" /></dt>
+            <dd><label>Edad</label></dd>
+            <dt><input type="number" name="edad" value="{{ persona.edad }}" /></dt>
+        </dl>
+        <input type="submit" value="Guardar" />
+    </form>
+</div>
+{% endblock cuerpo %}
