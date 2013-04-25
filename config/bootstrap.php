@@ -6,8 +6,6 @@ use Symfony\Component\Validator\Validation;
 
 $loader = require_once __DIR__ . '/../vendor/autoload.php';
 
-//$loader->add(null, __DIR__ . "/../lib/Entity/");
-
 define('BASE_URL', 'http://localhost/twig_doctrine2/');
 define('DEBUG', true);
 
@@ -20,14 +18,11 @@ class App
         if (!$twig) {
             $loader = new Twig_Loader_Filesystem(__DIR__ . '/../views/');
             $twig = new Twig_Environment($loader, array(
-                'cache' => __DIR__ . '/cache/',
+                'cache' => __DIR__ . '/cache/twig',
                 'debug' => DEBUG,
             ));
 
-            $twig->addGlobal('base_url', BASE_URL);
-            $twig->addGlobal('flash', static::flash());
-
-            $twig->addFunction('path', new Twig_Function_Function('path'));
+            $twig->addExtension(new Twig_Extension_KuExtension());
         }
 
         return $twig;
@@ -44,7 +39,7 @@ class App
 
         if (!$em) {
 
-            $paths = array(__DIR__ . "/../lib/Entity/");
+            $paths = array(dirname(__DIR__) . "/lib/Entity");
 
             $isDevMode = DEBUG;
 
@@ -55,7 +50,11 @@ class App
                 'dbname' => 'doctrine2',
             );
 
+            $cache = new \Doctrine\Common\Cache\ArrayCache();
             $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+            $config->setProxyDir(__DIR__ . '/cache/Doctrine');
+            $config->setProxyNamespace('Proxies');
+            $config->setAutoGenerateProxyClasses(DEBUG);
             $em = EntityManager::create($dbParams, $config);
         }
 
@@ -81,8 +80,7 @@ class App
     public static function flash()
     {
         static $flash;
-        if(!$flash)
-        {
+        if (!$flash) {
             $flash = new Flash();
         }
 
@@ -91,7 +89,8 @@ class App
 
 }
 
-function path($path, array $params = array()){
+function path($path, array $params = array())
+{
     if (count($params)) {
         return BASE_URL . ltrim($path, '/') . '?' . http_build_query($params);
     } else {

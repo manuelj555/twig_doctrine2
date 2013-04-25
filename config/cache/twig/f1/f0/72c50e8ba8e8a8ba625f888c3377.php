@@ -10,6 +10,7 @@ class __TwigTemplate_f1f072c50e8ba8e8a8ba625f888c3377 extends Twig_Template
         $this->parent = false;
 
         $this->blocks = array(
+            'titulo' => array($this, 'block_titulo'),
             'cuerpo' => array($this, 'block_cuerpo'),
         );
     }
@@ -21,17 +22,24 @@ class __TwigTemplate_f1f072c50e8ba8e8a8ba625f888c3377 extends Twig_Template
 <html>
     <head>
         <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">
-        <title>";
-        // line 5
-        if (isset($context["base_url"])) { $_base_url_ = $context["base_url"]; } else { $_base_url_ = null; }
-        echo twig_escape_filter($this->env, $_base_url_, "html", null, true);
-        echo "</title>
+        <title>Twig - Doctrine2</title>
     </head>
     <body>
-        ";
+        <h1>";
         // line 8
-        $this->displayBlock('cuerpo', $context, $blocks);
+        $this->displayBlock('titulo', $context, $blocks);
+        echo "</h1>
+        ";
+        // line 9
+        echo twig_escape_filter($this->env, $this->getAttribute(helper("App", "flash"), "has", array(), "method"), "html", null, true);
+        echo "
+        ";
         // line 10
+        $this->env->loadTemplate("flashes.twig")->display($context);
+        // line 11
+        echo "        ";
+        $this->displayBlock('cuerpo', $context, $blocks);
+        // line 13
         echo "    </body>
 </html>
 
@@ -39,9 +47,15 @@ class __TwigTemplate_f1f072c50e8ba8e8a8ba625f888c3377 extends Twig_Template
     }
 
     // line 8
+    public function block_titulo($context, array $blocks = array())
+    {
+        echo "";
+    }
+
+    // line 11
     public function block_cuerpo($context, array $blocks = array())
     {
-        // line 9
+        // line 12
         echo "        ";
     }
 
@@ -57,6 +71,6 @@ class __TwigTemplate_f1f072c50e8ba8e8a8ba625f888c3377 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  45 => 9,  42 => 8,  35 => 10,  33 => 8,  26 => 5,  20 => 1,);
+        return array (  59 => 12,  56 => 11,  50 => 8,  43 => 13,  40 => 11,  38 => 10,  34 => 9,  30 => 8,  21 => 1,);
     }
 }
