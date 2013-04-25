@@ -10,6 +10,7 @@ class __TwigTemplate_7037fb90584dc989738d6eef1f4df449 extends Twig_Template
         $this->parent = false;
 
         $this->blocks = array(
+            'titulo' => array($this, 'block_titulo'),
             'cuerpo' => array($this, 'block_cuerpo'),
         );
     }
@@ -28,54 +29,33 @@ class __TwigTemplate_7037fb90584dc989738d6eef1f4df449 extends Twig_Template
         echo "</title>
     </head>
     <body>
-    \t<div>
-\t\t\t";
-        // line 9
-        if (isset($context["flash"])) { $_flash_ = $context["flash"]; } else { $_flash_ = null; }
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute($_flash_, "getMessages", array(), "method"));
-        foreach ($context['_seq'] as $context["type"] => $context["messages"]) {
-            // line 10
-            echo "    \t\t\t";
-            if (isset($context["messages"])) { $_messages_ = $context["messages"]; } else { $_messages_ = null; }
-            $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($_messages_);
-            foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 11
-                echo "    \t\t\t\t<div class=\"flash ";
-                if (isset($context["type"])) { $_type_ = $context["type"]; } else { $_type_ = null; }
-                echo twig_escape_filter($this->env, $_type_, "html", null, true);
-                echo "\">";
-                if (isset($context["message"])) { $_message_ = $context["message"]; } else { $_message_ = null; }
-                echo twig_escape_filter($this->env, $_message_, "html", null, true);
-                echo "</div>
-    \t\t\t";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
-            $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 13
-            echo "\t\t\t";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['type'], $context['messages'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 14
-        echo "    \t</div>
+        <h1>";
+        // line 8
+        $this->displayBlock('titulo', $context, $blocks);
+        echo "</h1>
         ";
-        // line 15
+        // line 9
+        $this->env->loadTemplate("flashes.twig")->display($context);
+        // line 10
+        echo "        ";
         $this->displayBlock('cuerpo', $context, $blocks);
-        // line 17
+        // line 12
         echo "    </body>
 </html>
 
 ";
     }
 
-    // line 15
+    // line 8
+    public function block_titulo($context, array $blocks = array())
+    {
+        echo "";
+    }
+
+    // line 10
     public function block_cuerpo($context, array $blocks = array())
     {
-        // line 16
+        // line 11
         echo "        ";
     }
 
@@ -91,6 +71,6 @@ class __TwigTemplate_7037fb90584dc989738d6eef1f4df449 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  79 => 16,  76 => 15,  69 => 17,  67 => 15,  64 => 14,  58 => 13,  45 => 11,  39 => 10,  34 => 9,  26 => 5,  20 => 1,);
+        return array (  59 => 11,  56 => 10,  50 => 8,  43 => 12,  40 => 10,  38 => 9,  34 => 8,  27 => 5,  21 => 1,);
     }
 }

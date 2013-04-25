@@ -5,13 +5,8 @@
         <title>{{ base_url }}</title>
     </head>
     <body>
-    	<div>
-			{% for type, messages in flash.getMessages() %}
-    			{% for message in messages %}
-    				<div class="flash {{ type }}">{{ message }}</div>
-    			{% endfor %}
-			{% endfor %}
-    	</div>
+        <h1>{% block titulo "" %}</h1>
+        {% include "flashes.twig" %}
         {% block cuerpo %}
         {% endblock cuerpo %}
     </body>

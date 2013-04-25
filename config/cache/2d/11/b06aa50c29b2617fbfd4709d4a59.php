@@ -10,6 +10,7 @@ class __TwigTemplate_2d11b06aa50c29b2617fbfd4709d4a59 extends Twig_Template
         $this->parent = $this->env->loadTemplate("template.twig");
 
         $this->blocks = array(
+            'titulo' => array($this, 'block_titulo'),
             'cuerpo' => array($this, 'block_cuerpo'),
         );
     }
@@ -25,12 +26,16 @@ class __TwigTemplate_2d11b06aa50c29b2617fbfd4709d4a59 extends Twig_Template
     }
 
     // line 3
+    public function block_titulo($context, array $blocks = array())
+    {
+        echo "Listado de Personas";
+    }
+
+    // line 4
     public function block_cuerpo($context, array $blocks = array())
     {
-        // line 4
-        echo "<h1>Personas en la BD</h1>
-<p><a href=\"";
         // line 5
+        echo "<p><a href=\"";
         echo twig_escape_filter($this->env, path("crear.php"), "html", null, true);
         echo "\">Crear</a></p>
 <table>
@@ -99,6 +104,6 @@ class __TwigTemplate_2d11b06aa50c29b2617fbfd4709d4a59 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  85 => 24,  75 => 21,  70 => 20,  65 => 19,  60 => 18,  55 => 17,  52 => 16,  47 => 15,  34 => 5,  31 => 4,  28 => 3,);
+        return array (  90 => 24,  80 => 21,  75 => 20,  70 => 19,  65 => 18,  60 => 17,  57 => 16,  52 => 15,  38 => 5,  35 => 4,  29 => 3,);
     }
 }

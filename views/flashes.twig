@@ -1,0 +1,7 @@
+<div>
+    {% for type, messages in flash.getMessages() %}
+        {% for message in messages %}
+            <div class="flash {{ type }}">{{ message }}</div>
+        {% endfor %}
+    {% endfor %}
+</div>
