@@ -11,4 +11,5 @@ return array(
     'Doctrine\\ORM' => $vendorDir . '/doctrine/orm/lib',
     'Doctrine\\DBAL' => $vendorDir . '/doctrine/dbal/lib',
     'Doctrine\\Common' => $vendorDir . '/doctrine/common/lib',
+    '' => array($baseDir . '/lib/Entity', $baseDir . '/lib'),
 );

@@ -12,9 +12,11 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     try {
         App::doctrine()->persist($persona);
         App::doctrine()->flush();
-        echo "Se guardó la persona";
+        App::flash()->add('success', "Se creó el registro");
+        header("Location: " . path(''));
+        die;
     } catch (LogicException $e) {
-        echo $e->getMessage();
+        App::flash()->add('error', $e->getMessage());
     }
 }
 

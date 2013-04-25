@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Validation;
 
 $loader = require_once __DIR__ . '/../vendor/autoload.php';
 
-$loader->add(null, __DIR__ . "/../lib/Entity/");
+//$loader->add(null, __DIR__ . "/../lib/Entity/");
 
 define('BASE_URL', 'http://localhost/twig_doctrine2/');
 define('DEBUG', true);
@@ -25,14 +25,9 @@ class App
             ));
 
             $twig->addGlobal('base_url', BASE_URL);
+            $twig->addGlobal('flash', static::flash());
 
-            $twig->addFunction('path', new Twig_Function_Function(function($file, array $params = array()) {
-                        if (count($params)) {
-                            return BASE_URL . ltrim($file, '/') . '?' . http_build_query($params);
-                        } else {
-                            return BASE_URL . ltrim($file, '/');
-                        }
-                    }));
+            $twig->addFunction('path', new Twig_Function_Function('path'));
         }
 
         return $twig;
@@ -57,7 +52,7 @@ class App
                 'driver' => 'pdo_mysql',
                 'user' => 'root',
                 'password' => '',
-                'dbname' => 'test',
+                'dbname' => 'doctrine2',
             );
 
             $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
@@ -83,4 +78,23 @@ class App
         return $validator;
     }
 
+    public static function flash()
+    {
+        static $flash;
+        if(!$flash)
+        {
+            $flash = new Flash();
+        }
+
+        return $flash;
+    }
+
+}
+
+function path($path, array $params = array()){
+    if (count($params)) {
+        return BASE_URL . ltrim($path, '/') . '?' . http_build_query($params);
+    } else {
+        return BASE_URL . ltrim($path, '/');
+    }
 }

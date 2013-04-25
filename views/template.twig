@@ -5,6 +5,13 @@
         <title>{{ base_url }}</title>
     </head>
     <body>
+    	<div>
+			{% for type, messages in flash.getMessages() %}
+    			{% for message in messages %}
+    				<div class="flash {{ type }}">{{ message }}</div>
+    			{% endfor %}
+			{% endfor %}
+    	</div>
         {% block cuerpo %}
         {% endblock cuerpo %}
     </body>
