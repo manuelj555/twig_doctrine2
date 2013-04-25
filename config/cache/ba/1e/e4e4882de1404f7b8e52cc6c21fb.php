@@ -49,6 +49,10 @@ class __TwigTemplate_ba1ee4e4882de1404f7b8e52cc6c21fb extends Twig_Template
         echo "\" /></dt>
         </dl>
         <input type=\"submit\" value=\"Guardar\" />
+        <a href=\"";
+        // line 14
+        echo twig_escape_filter($this->env, path(null), "html", null, true);
+        echo "\">Listado</a>
     </form>
 </div>
 ";
@@ -72,6 +76,6 @@ class __TwigTemplate_ba1ee4e4882de1404f7b8e52cc6c21fb extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  58 => 4,  47 => 11,  41 => 9,  32 => 4,  29 => 3,);
+        return array (  62 => 4,  54 => 14,  47 => 11,  41 => 9,  32 => 4,  29 => 3,);
     }
 }
