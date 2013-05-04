@@ -1,4 +1,4 @@
-pruebas_phplot
+twig_doctrine2
 ==============
 
-Añadiendo algunos gráficos al crud hecho con twig y doctrine2 para aprender a usar la librería phplot
+Introducción al uso de las librerias Twig y Doctrine2 en un proyecto cualquiera con PHP
