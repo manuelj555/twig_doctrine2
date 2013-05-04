@@ -11,16 +11,7 @@ function request_uri()
     if (isset($_SERVER['PATH_INFO']) && '/' !== $_SERVER['PATH_INFO']) {
         return trim($_SERVER['PATH_INFO'], '/');
     } else {
-        return 'home';
-    }
-}
-
-function path($path, array $params = array())
-{
-    if (count($params)) {
-        return BASE_URL . '/' . trim($path, '/') . '?' . http_build_query($params);
-    } else {
-        return BASE_URL . '/' . trim($path, '/');
+        return 'index';
     }
 }
 
@@ -104,3 +95,4 @@ class App
     }
 
 }
+

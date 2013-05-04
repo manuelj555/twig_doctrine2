@@ -1,7 +1,5 @@
 <?php
 
-require_once './config/bootstrap.php';
-
 $persona = new Persona();
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
@@ -20,4 +18,4 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     }
 }
 
-echo App::twig()->render('crear.twig', array('persona' => $persona));
+echo App::twig()->render('personas/crear.twig', array('persona' => $persona));

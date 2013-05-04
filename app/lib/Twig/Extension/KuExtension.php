@@ -2,6 +2,12 @@
 
 class Twig_Extension_KuExtension extends Twig_Extension
 {
+
+    public function initRuntime(\Twig_Environment $environment)
+    {
+        $environment->addGlobal('bootstrap', $environment->loadTemplate('macros.twig'));
+    }
+
     public function getName()
     {
         return 'ku_extension';
@@ -19,6 +25,9 @@ class Twig_Extension_KuExtension extends Twig_Extension
     {
         return array(
             new Twig_SimpleFunction('path', 'path'),
+            new Twig_SimpleFunction('asset', function($file) {
+                        return BASE_URL . ltrim($file, '/');
+                    }),
             new Twig_SimpleFunction('*_*', 'helper'),
         );
     }

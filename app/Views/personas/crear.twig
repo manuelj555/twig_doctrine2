@@ -11,8 +11,8 @@
             <dd><label>Edad</label></dd>
             <dt><input type="number" name="edad" value="{{ persona.edad }}" /></dt>
         </dl>
-        <input type="submit" value="Guardar" />
-        <a href="{{ path(null) }}">Listado</a>
+        {{ bootstrap.submit() }}
+        {{ bootstrap.cancel(path('personas'), 'Listado') }}
     </form>
 </div>
 {% endblock cuerpo %}

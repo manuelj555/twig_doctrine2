@@ -1,0 +1,29 @@
+{% extends "template.twig" %}
+
+{% block titulo "Listado de Personas" %}
+{% block cuerpo %}
+<p>
+    {{ bootstrap.add(path('personas/crear')) }}
+        <span class="pull-right">{{ bootstrap.report(path('reportes/edades'), 'Reporte de Edades') }}</span>
+</p>
+<table class="table">
+    <thead>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Edad</th>
+    <th style="width: 50px">Edit</th>
+    <th style="width: 50px">Eliminar</th>
+</thead>
+<tbody>
+    {% for e in personas %}
+        <tr>
+            <td>{{ e.id }}</td>
+            <td>{{ e.nombre }}</td>
+            <td>{{ e.edad }}</td>
+            <td>{{ bootstrap.edit(path('personas/editar', {id: e.id })) }}</td>
+            <td>{{ bootstrap.delete(path('personas/eliminar', {id: e.id })) }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock cuerpo %}

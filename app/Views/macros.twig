@@ -1,0 +1,52 @@
+{% macro alert(message, type) %}
+<div class="alert alert-{{ type }}">
+<button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}</div>
+{% endmacro %}
+
+{############################ LINKS ##########################}
+{% macro link(url, text, type, icon, title) %}
+<a title="{{ title|default(text) }}" href="{{ url }}" class="btn btn-{{ type }}">
+{% if icon %}<i class="icon-{{icon}}"></i> {% endif %}{{ text }}</a>
+{% endmacro %}
+
+{% macro edit(url, text) %}
+{% import _self as this %}
+{{ this.link(url, '', 'info', 'edit', text|default('Editar')) }}
+{% endmacro %}
+
+{% macro delete(url, text) %}
+{% import _self as this %}
+{{ this.link(url, '', 'danger', 'ban-circle', text|default('Eliminar')) }}
+{% endmacro %}
+
+{% macro cancel(url, text, icon) %}
+{% import _self as this %}
+{{ this.link(url, text|default('CANCELAR'), 'danger', icon|default('th-list')) }}
+{% endmacro %}
+
+{% macro add(url, text) %}
+{% import _self as this %}
+{{ this.link(url, text|default('Crear'), 'success', 'check') }}
+{% endmacro %}
+
+{% macro report(url, text) %}
+{% import _self as this %}
+{{ this.link(url, text|default('Reporte')|upper, 'info', 'print') }}
+{% endmacro %}
+
+{############################ BOTONES ##########################}
+
+{% macro button(text, btn_class, icon, type) %}
+<button type="{{ type|default('button') }}" class="btn btn-{{ btn_class }}">
+{% if icon %}<i class="icon-{{icon}}"></i> {% endif %}{{ text|upper }}</button>
+{% endmacro %}
+
+{% macro submit(text, icon) %}
+{% import _self as this %}
+{{ this.button(text|default('GUARDAR'), 'success', icon|default('ok'), 'submit') }}
+{% endmacro %}
+
+{% macro reset(text, icon) %}
+{% import _self as this %}
+{{ this.button(text|default('LIMPIAR'), 'info', icon|default('undo'), 'reset') }}
+{% endmacro %}

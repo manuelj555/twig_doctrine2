@@ -1,5 +1,5 @@
 <?php 
 
-$personas = App::doctrine()->getRepository('Persona1')->findAll();
+$personas = App::doctrine()->getRepository('Persona')->findAll();
 
-echo App::twig()->render("home.twig", array('personas' => $personas));
+echo App::twig()->render("personas/index.twig", array('personas' => $personas));
