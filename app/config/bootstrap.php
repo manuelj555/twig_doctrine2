@@ -4,10 +4,25 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Validator\Validation;
 
-$loader = require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
-define('BASE_URL', 'http://localhost/twig_doctrine2/');
-define('DEBUG', true);
+function request_uri()
+{
+    if (isset($_SERVER['PATH_INFO'])) {
+        return trim($_SERVER['PATH_INFO'], '/');
+    } else {
+        return 'home';
+    }
+}
+
+function path($path, array $params = array())
+{
+    if (count($params)) {
+        return BASE_URL . ltrim($path, '/') . '?' . http_build_query($params);
+    } else {
+        return BASE_URL . ltrim($path, '/');
+    }
+}
 
 class App
 {
@@ -87,13 +102,4 @@ class App
         return $flash;
     }
 
-}
-
-function path($path, array $params = array())
-{
-    if (count($params)) {
-        return BASE_URL . ltrim($path, '/') . '?' . http_build_query($params);
-    } else {
-        return BASE_URL . ltrim($path, '/');
-    }
 }
