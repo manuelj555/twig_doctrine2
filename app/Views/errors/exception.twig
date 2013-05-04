@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ base_url }}</title>
+        <style type="text/css">
+                p{background-color: #cccccc;padding: 30px;width: 80%}
+        </style>
+    </head>
+    <body>
+        <h1>Ha ocurrido una Exepción</h1>
+        <p><strong>{{ type }} ({{ exception.code }})</strong>: {{ exception.message|raw }}<br/>
+            Archivo: {{ exception.file }}<br/>
+            Linea: {{ exception.line }}
+        </p>
+        <p>{{ exception.traceAsString() }}</p>
+    </body>
+</html>
+

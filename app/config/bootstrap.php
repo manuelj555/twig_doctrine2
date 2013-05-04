@@ -8,7 +8,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 function request_uri()
 {
-    if (isset($_SERVER['PATH_INFO'])) {
+    if (isset($_SERVER['PATH_INFO']) && '/' !== $_SERVER['PATH_INFO']) {
         return trim($_SERVER['PATH_INFO'], '/');
     } else {
         return 'home';
@@ -18,9 +18,9 @@ function request_uri()
 function path($path, array $params = array())
 {
     if (count($params)) {
-        return BASE_URL . ltrim($path, '/') . '?' . http_build_query($params);
+        return BASE_URL . '/' . trim($path, '/') . '?' . http_build_query($params);
     } else {
-        return BASE_URL . ltrim($path, '/');
+        return BASE_URL . '/' . trim($path, '/');
     }
 }
 
@@ -35,6 +35,7 @@ class App
             $twig = new Twig_Environment($loader, array(
                 'cache' => __DIR__ . '/cache/twig',
                 'debug' => DEBUG,
+                'strict_variables' => true,
             ));
 
             $twig->addExtension(new Twig_Extension_KuExtension());

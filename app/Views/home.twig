@@ -3,10 +3,10 @@
 {% block titulo "Listado de Personas" %}
 {% block cuerpo %}
 <p>
-    <a href="{{ path('crear.php') }}">Crear</a>
+    <a href="{{ path('personas/crear.php') }}">Crear</a>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="{{ path('reporte_edades.php') }}">Reporte de Edades</a>
+    <a href="{{ path('reportes/edades.php') }}">Reporte de Edades</a>
 </p>
 <table>
     <thead>
@@ -22,8 +22,8 @@
             <td>{{ e.id }}</td>
             <td>{{ e.nombre }}</td>
             <td>{{ e.edad }}</td>
-            <td><a href="{{ path('editar.php', {id: e.id }) }}">Editar</a></td>
-            <td><a href="{{ path('eliminar.php', {id: e.id }) }}">Eliminar</a></td>
+            <td><a href="{{ path('personas/editar.php', {id: e.id }) }}">Editar</a></td>
+            <td><a href="{{ path('personas/eliminar.php', {id: e.id }) }}">Eliminar</a></td>
         </tr>
     {% endfor %}
 </tbody>
