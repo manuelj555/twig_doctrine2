@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Validation;
 
 $loader = require_once __DIR__ . '/../vendor/autoload.php';
 
-define('BASE_URL', 'http://localhost/twig_doctrine2/');
+define('BASE_URL', 'http://localhost/pruebas_phplot/');
 define('DEBUG', true);
 
 class App
