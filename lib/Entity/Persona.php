@@ -24,6 +24,13 @@ class Persona
      * @Column(type="integer", length=2)
      */
     protected $edad;
+    
+    /**
+     *
+     * @var array
+     * @OneToMany(targetEntity="Compra", mappedBy="persona")
+     */
+    protected $compras;
 
     /**
      * @return integer 
@@ -95,4 +102,44 @@ class Persona
         }
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->compras = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add compras
+     *
+     * @param \Compra $compras
+     * @return Persona
+     */
+    public function addCompra(\Compra $compras)
+    {
+        $this->compras[] = $compras;
+    
+        return $this;
+    }
+
+    /**
+     * Remove compras
+     *
+     * @param \Compra $compras
+     */
+    public function removeCompra(\Compra $compras)
+    {
+        $this->compras->removeElement($compras);
+    }
+
+    /**
+     * Get compras
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCompras()
+    {
+        return $this->compras;
+    }
 }
