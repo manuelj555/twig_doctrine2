@@ -34,28 +34,14 @@
 
 {% block javascript %}
     <script type="text/javascript">
-        $("#p_cedula").typeahead({
-            source: {{ cedulas|json_encode|raw }},
-            updater: function(item) {
-                buscar()
-                return item
+        $("#p_cedula").autocomplete({
+            source: {{ personas|json_encode|raw }},
+            select: function(event, ui) {
+        console.log(ui.item)
+                $("#p_id").val(ui.item[0].id)
+                $("#p_nombre").val(ui.item[0].nombre)
+                $("#p_edad").val(ui.item[0].edad)
             }
         })
-        $('.cedula button').on('click', buscar)
-        $('#p_cedula').on('keyup', function(event) {
-            if (13 === event.keyCode) {
-                buscar()
-            }
-        })
-
-        function buscar() {
-            $.getJSON('{{ path('personas/buscar') }}', {cedula: $("#p_cedula").val()}).done(function(data) {
-                if (data) {
-                    $("#p_id").val(data.id)
-                    $("#p_nombre").val(data.nombre)
-                    $("#p_edad").val(data.edad)
-                }
-            })
-        }
         </script>
 {% endblock %}

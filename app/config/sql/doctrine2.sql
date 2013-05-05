@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2013-05-04 20:54:39
+Date: 2013-05-04 23:40:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `articulos` (
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_9C6F85973A909126` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of articulos
@@ -41,6 +41,7 @@ INSERT INTO `articulos` VALUES ('7', 'Colores', '22', '32', '1');
 INSERT INTO `articulos` VALUES ('8', 'Compas', '30', '8', '1');
 INSERT INTO `articulos` VALUES ('9', 'Block de dibujo', '15', '15', '1');
 INSERT INTO `articulos` VALUES ('10', 'Cartulina', '5', '80', '1');
+INSERT INTO `articulos` VALUES ('11', '', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for `compras`
@@ -84,13 +85,14 @@ CREATE TABLE `personas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `edad` int(11) NOT NULL,
+  `cedula` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of personas
 -- ----------------------------
-INSERT INTO `personas` VALUES ('1', 'manuel', '24');
-INSERT INTO `personas` VALUES ('2', 'normelis', '22');
-INSERT INTO `personas` VALUES ('3', 'hola', '32');
-INSERT INTO `personas` VALUES ('4', 'josÃ©', '24');
+INSERT INTO `personas` VALUES ('1', 'manuel', '24', '18646342');
+INSERT INTO `personas` VALUES ('2', 'normelis', '22', '19616479');
+INSERT INTO `personas` VALUES ('3', 'hola', '32', '123456789');
+INSERT INTO `personas` VALUES ('4', 'josÃ©', '24', '18083933');
