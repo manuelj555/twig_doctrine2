@@ -1,0 +1,24 @@
+{% extends "template.twig" %}
+
+{% block stylesheet %}
+<style type="text/css">
+   .menu a{display: block;margin-bottom: 10px;text-align: left}
+</style>
+{% endblock %}
+
+{% block titulo 'Nueva Factura' %}
+{% block cuerpo %}
+<div class="row-fluid">
+    <div class="span3">
+        <div class="well menu">
+            {{ bootstrap.link(path(''), 'Nueva Factura', 'primary', 'user') }}
+            {{ bootstrap.link(path('personas'), 'Listado de Personas', 'success', 'th-list') }}
+            {{ bootstrap.link(path('articulos'), 'Listado de Artículos', 'inverse', 'th-list icon-white') }}
+        </div>
+    </div>
+    <div class="span9">
+        <div class="well">
+        </div>
+    </div>
+</div>
+{% endblock %}

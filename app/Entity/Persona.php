@@ -16,6 +16,11 @@ class Persona
     private $id;
 
     /**
+     * @Column(type="string", length=15)
+     */
+    protected $cedula;
+
+    /**
      * @Column(type="string", length=50)
      */
     protected $nombre;
@@ -24,7 +29,7 @@ class Persona
      * @Column(type="integer", length=2)
      */
     protected $edad;
-    
+
     /**
      *
      * @var array
@@ -38,6 +43,18 @@ class Persona
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getCedula()
+    {
+        return $this->cedula;
+    }
+
+    public function setCedula($cedula)
+    {
+        $this->cedula = $cedula;
+
+        return $this;
     }
 
     /**
@@ -109,7 +126,7 @@ class Persona
     {
         $this->compras = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Add compras
      *
@@ -119,7 +136,7 @@ class Persona
     public function addCompra(\Compra $compras)
     {
         $this->compras[] = $compras;
-    
+
         return $this;
     }
 
@@ -142,4 +159,5 @@ class Persona
     {
         return $this->compras;
     }
+
 }

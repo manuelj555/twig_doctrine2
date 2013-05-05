@@ -4,6 +4,7 @@ $persona = new Persona();
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
 
+    $persona->setCedula($_POST['cedula']);
     $persona->setNombre($_POST['nombre']);
     $persona->setEdad($_POST['edad']);
 
@@ -11,7 +12,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
         App::doctrine()->persist($persona);
         App::doctrine()->flush();
         App::flash()->add('success', "Se creó a {$persona->getNombre()} con exito!!!");
-        header("Location: " . path(''));
+        header("Location: " . path('personas'));
         die;
     } catch (LogicException $e) {
         App::flash()->add('error', $e->getMessage());

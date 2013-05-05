@@ -7,4 +7,4 @@ if(isset($_GET['id'])){
 	App::flash()->add('success', "Se eliminó a {$persona->getNombre()} de la BD");
 }
 
-header("Location: " . path(''));
+header("Location: " . path('personas'));
