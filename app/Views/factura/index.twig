@@ -1,24 +1,61 @@
 {% extends "template.twig" %}
 
+{% block titulo 'Nueva Factura' %}
+
 {% block stylesheet %}
 <style type="text/css">
-   .menu a{display: block;margin-bottom: 10px;text-align: left}
-</style>
+        #factura .row-fluid{margin-bottom: 10px}
+        #factura label{width: 100px;text-align: right;margin-right: 10px}
+    </style>
 {% endblock %}
 
-{% block titulo 'Nueva Factura' %}
 {% block cuerpo %}
-<div class="row-fluid">
-    <div class="span3">
-        <div class="well menu">
-            {{ bootstrap.link(path(''), 'Nueva Factura', 'primary', 'user') }}
-            {{ bootstrap.link(path('personas'), 'Listado de Personas', 'success', 'th-list') }}
-            {{ bootstrap.link(path('articulos'), 'Listado de Artículos', 'inverse', 'th-list icon-white') }}
+    <form method="post" class="form-inline" id="factura">
+        <input type="hidden" id="p_id" />
+        <div class="row-fluid">
+            <div class="span12">
+                <label>Cédula</label><div class="input-append cedula">
+                    <input type="text" id="p_cedula"/><button class="btn" type="button">Buscar</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="span9">
-        <div class="well">
+        <div class="row-fluid">
+            <div class="span6"><label>Nombre</label><input type="text" id="p_nombre" /></div>
         </div>
-    </div>
-</div>
+        <div class="row-fluid">
+            <div class="span6"><label>Edad</label><input type="number" id="p_edad" /></div>
+        </div>
+        <hr/>
+        <div class="row-fluid" >
+            <div class="span6"><label>Articulo</label><input type="text" id="a_nombre" /></div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $("#p_cedula").typeahead({
+            source: {{ cedulas|json_encode|raw }},
+            updater: function(item) {
+                buscar()
+                return item
+            }
+        })
+        $('.cedula button').on('click', buscar)
+        $('#p_cedula').on('keyup', function(event) {
+            if (13 === event.keyCode) {
+                buscar()
+            }
+        })
+
+        function buscar() {
+            $.getJSON('{{ path('personas/buscar') }}', {cedula: $("#p_cedula").val()}).done(function(data) {
+                if (data) {
+                    $("#p_id").val(data.id)
+                    $("#p_nombre").val(data.nombre)
+                    $("#p_edad").val(data.edad)
+                }
+            })
+        }
+        </script>
 {% endblock %}
