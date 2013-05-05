@@ -23,6 +23,8 @@
             <td>{{ bootstrap.edit(path('personas/editar', {id: e.id })) }}</td>
             <td>{{ bootstrap.delete(path('personas/eliminar', {id: e.id })) }}</td>
         </tr>
+    {% else %}
+        <tr><td colspan="100">No hay registros</td></tr>
     {% endfor %}
     </tbody>
 </table>

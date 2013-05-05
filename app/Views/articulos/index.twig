@@ -1,0 +1,40 @@
+{% extends "template.twig" %}
+
+{% block titulo "Listado de Artículos" %}
+{% block cuerpo %}
+<p>
+    {{ bootstrap.add(path('articulos/crear')) }}
+</p>
+<table class="table">
+    <thead>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Precio</th>
+    <th>Catindad</th>
+    <th>Status</th>
+    <th style="width: 50px">Edit</th>
+    <th style="width: 50px">Eliminar</th>
+</thead>
+<tbody>
+    {% for e in articulos %}
+        <tr>
+            <td>{{ e.id }}</td>
+            <td>{{ e.nombre|upper }}</td>
+            <td>{{ e.precio }}</td>
+            <td>{{ e.cantidad }}</td>
+            <td>
+                {% if constant('Articulo::STATUS_ACTIVE') == e.status %}
+                    <span class="label label-info">Activo</span>
+                {% else %}
+                    <span class="label label-important">Inactivo</span>
+                {% endif %}
+            </td>
+            <td>{{ bootstrap.edit(path('articulos/editar', {id: e.id })) }}</td>
+            <td>{{ bootstrap.delete(path('articulos/eliminar', {id: e.id })) }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="100">No hay registros</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock cuerpo %}

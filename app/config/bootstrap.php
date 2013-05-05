@@ -46,7 +46,7 @@ class App
 
         if (!$em) {
 
-            $paths = array(dirname(__DIR__) . "/lib/Entity");
+            $paths = array(dirname(__DIR__) . "/Entity");
 
             $isDevMode = DEBUG;
 

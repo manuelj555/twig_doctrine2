@@ -33,7 +33,7 @@ class Articulo
     /**
      *
      * @var float
-     * @Column(type="integer", length=11)
+     * @Column(type="float", length=11)
      */
     protected $precio;
 

@@ -6,6 +6,7 @@ class Twig_Extension_KuExtension extends Twig_Extension
     public function initRuntime(\Twig_Environment $environment)
     {
         $environment->addGlobal('bootstrap', $environment->loadTemplate('macros.twig'));
+        $environment->getExtension('core')->setNumberFormat(2, '.', '');
     }
 
     public function getName()

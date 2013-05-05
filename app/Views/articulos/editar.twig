@@ -1,0 +1,13 @@
+{% extends "articulos/crear.twig" %}
+
+{% block titulo 'Editar Artículo' %}
+
+{% block status %}
+<dd><label>Estado</label></dd>
+<dt>
+<select name="status">
+    <option value="1" {{ articulo.status == constant('Articulo::STATUS_ACTIVE') ? 'selected' : '' }}>Activo</option>
+    <option value="0" {{ articulo.status == constant('Articulo::STATUS_INACTIVE') ? 'selected' : '' }}>Inactivo</option>
+</select>
+</dt>
+{% endblock %}

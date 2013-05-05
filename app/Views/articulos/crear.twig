@@ -1,0 +1,21 @@
+{% extends "template.twig" %}
+
+{% block titulo "Crear Artículo" %}
+
+{% block cuerpo %}
+<div>
+    <form method="post">
+        <dl>
+            <dd><label>Nombre</label></dd>
+            <dt><input type="text" name="nombre" value="{{ articulo.nombre }}" /></dt>
+            <dd><label>Cantidad</label></dd>
+            <dt><input type="number" name="cantidad" value="{{ articulo.cantidad }}" /></dt>
+            <dd><label>Precio</label></dd>
+            <dt><input type="number"  name="precio" step="0.1" value="{{ articulo.precio }}" /></dt>
+            {% block status '' %}
+        </dl>
+        {{ bootstrap.submit() }}
+        {{ bootstrap.cancel(path('articulos'), 'Listado') }}
+    </form>
+</div>
+{% endblock cuerpo %}

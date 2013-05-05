@@ -10,7 +10,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     try {
         App::doctrine()->persist($persona);
         App::doctrine()->flush();
-        App::flash()->add('success', "Se editó el registro");
+        App::flash()->add('success', "Se editó a {$persona->getNombre()} con exito!!!");
         header("Location: " . path(''));
         die;
     } catch (LogicException $e) {
