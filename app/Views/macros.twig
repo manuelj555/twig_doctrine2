@@ -6,6 +6,7 @@
 {% macro articulo() %}
 {% spaceless %}
 <tr>
+<input type="hidden" value="{{ '{{ cantidad }}' }}" name="art[{{ '{{ id }}' }}][cantidad]" />
     <td>{{ '{{ nombre }}' }}</td>
     <td>{{ '{{ precio }}' }} Bs</td>
     <td>{{ '{{ cantidad }}' }}</td>
