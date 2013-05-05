@@ -29,13 +29,17 @@
         <div class="row-fluid" >
             <div class="span6"><label>Articulo</label><input type="text" id="a_nombre" /></div>
         </div>
-        <div class="row-fluid">
-            <div class="span3"><strong>ARTÍCULO</strong></div>
-            <div class="span3"><strong>PRECIO</strong></div>
-            <div class="span3"><strong>CANTIDAD</strong></div>
-            <div class="span3"><strong>SUBTOTAL</strong></div>
-        </div>
-        <div id="articulos_factura"></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ARTÍCULO</th>
+                    <th>PRECIO</th>
+                    <th>CANTIDAD</th>
+                    <th>SUBTOTAL</th>
+                </tr>
+            </thead>
+            <tbody id="articulos_factura"></tbody>
+        </table>
     </form>
 {% endblock %}
 
@@ -60,6 +64,8 @@
             select: function(event, ui) {
                 ui.item[0].subTotal = ui.item[0].precio
                 $("#articulos_factura").append(articuloTemplate.render(ui.item[0]))
+                $(this).val('')
+                return false;
             }
         })
         </script>

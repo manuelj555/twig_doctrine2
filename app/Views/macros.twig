@@ -5,12 +5,12 @@
 
 {% macro articulo() %}
 {% spaceless %}
-<div class="row-fluid">
-	<div class="span3">{{ '{{ nombre }}' }}</div>
-	<div class="span3 text-right">{{ '{{ precio }}' }} Bs</div>
-	<div class="span3 text-right">{{ '{{ cantidad }}' }}</div>
-	<div class="span3 text-right">{{ '{{ subTotal }}' }} Bs</div>
-</div>
+<tr>
+    <td>{{ '{{ nombre }}' }}</td>
+    <td>{{ '{{ precio }}' }} Bs</td>
+    <td>{{ '{{ cantidad }}' }}</td>
+    <td>{{ '{{ subTotal }}' }} Bs</td>
+</tr>
 {% endspaceless %}
 {% endmacro %}
 
