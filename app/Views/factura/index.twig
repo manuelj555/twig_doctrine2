@@ -29,18 +29,37 @@
         <div class="row-fluid" >
             <div class="span6"><label>Articulo</label><input type="text" id="a_nombre" /></div>
         </div>
+        <div class="row-fluid">
+            <div class="span3"><strong>ARTÍCULO</strong></div>
+            <div class="span3"><strong>PRECIO</strong></div>
+            <div class="span3"><strong>CANTIDAD</strong></div>
+            <div class="span3"><strong>SUBTOTAL</strong></div>
+        </div>
+        <div id="articulos_factura"></div>
     </form>
 {% endblock %}
 
 {% block javascript %}
+    <script src="{{ asset('js/twig.min.js') }}"></script>
     <script type="text/javascript">
         $("#p_cedula").autocomplete({
             source: {{ personas|json_encode|raw }},
             select: function(event, ui) {
-        console.log(ui.item)
                 $("#p_id").val(ui.item[0].id)
                 $("#p_nombre").val(ui.item[0].nombre)
                 $("#p_edad").val(ui.item[0].edad)
+            }
+        })
+
+        var articuloTemplate = twig({
+            data: "{{ bootstrap.articulo()|escape('js') }}"
+        })
+
+        $("#a_nombre").autocomplete({
+            source: {{ articulos|json_encode|raw }},
+            select: function(event, ui) {
+                ui.item[0].subTotal = ui.item[0].precio
+                $("#articulos_factura").append(articuloTemplate.render(ui.item[0]))
             }
         })
         </script>

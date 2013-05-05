@@ -8,7 +8,7 @@ define('DEBUG', true);
 
 function path($path, array $params = array())
 {
-    $file = 'index.php/'; //si se usa mod_rewrite es mejor dejar el file vacio
+    $file = ''; //si se usa mod_rewrite es mejor dejar el file vacio
     if (count($params)) {
         return BASE_URL . $file . trim($path, '/') . '?' . http_build_query($params);
     } else {

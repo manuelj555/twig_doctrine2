@@ -1,13 +1,14 @@
 <?php
 
-$result = App::doctrine()
+$personas = App::doctrine()
         ->createQuery('SELECT p.cedula value, p.cedula label, p FROM Persona p')
         ->getArrayResult();
 
-//foreach ($result as $i => $e) {
-//    $result[$i]['label'] = $result[$i]['value'] = $result[$i]['cedula'];
-//}
+$articulos = App::doctrine()
+        ->createQuery('SELECT a.nombre value, UPPER(a.nombre) label, a FROM Articulo a')
+        ->getArrayResult();
 
 App::twig()->display('factura/index.twig', array(
-    'personas' => $result,
+    'personas' => $personas,
+    'articulos' => $articulos,
 ));

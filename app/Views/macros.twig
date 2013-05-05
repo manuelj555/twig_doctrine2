@@ -3,6 +3,17 @@
 <button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}</div>
 {% endmacro %}
 
+{% macro articulo() %}
+{% spaceless %}
+<div class="row-fluid">
+	<div class="span3">{{ '{{ nombre }}' }}</div>
+	<div class="span3 text-right">{{ '{{ precio }}' }} Bs</div>
+	<div class="span3 text-right">{{ '{{ cantidad }}' }}</div>
+	<div class="span3 text-right">{{ '{{ subTotal }}' }} Bs</div>
+</div>
+{% endspaceless %}
+{% endmacro %}
+
 {############################ LINKS ##########################}
 {% macro link(url, text, type, icon, title) %}
 <a title="{{ title|default(text) }}" href="{{ url }}" class="btn btn-{{ type }}">
