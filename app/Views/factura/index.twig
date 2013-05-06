@@ -12,12 +12,12 @@
 
 {% block cuerpo %}
     <form method="post" class="form-inline" id="factura">
-        <input type="hidden" id="p_id" />
+        <input type="hidden" id="p_id" name="p[id]" />
         <div class="row-fluid">
             <div class="span12">
                 <label>Cédula</label><div class="input-append cedula">
                     <input type="text" name="p[cedula]" id="p_cedula"/>
-                    <button class="btn" type="button">Buscar</button>
+                    <button class="btn" id="buscar_p" type="button">Buscar</button>
                 </div>
                 <button type="submit" class="btn btn-primary btn-large pull-right" disabled>Facturar</button>
             </div>
@@ -55,14 +55,22 @@
 {% block javascript %}
     <script src="{{ asset('js/twig.min.js') }}"></script>
     <script type="text/javascript">
-        $("#p_cedula").autocomplete({
-            source: {{ personas|json_encode|raw }},
-            select: function(event, ui) {
-                $("#p_id").val(ui.item[0].id)
-                $("#p_nombre").val(ui.item[0].nombre)
-                $("#p_edad").val(ui.item[0].edad)
-                $("#adicion_articulos").slideDown(500)
-            }
+        $("#buscar_p").on('click', function(event) {
+            event.preventDefault()
+            $.getJSON('{{ path('personas/buscar') }}', {cedula: $("#p_cedula").val()}).done(function(data) {
+                if (data) {
+                    $("#p_id").val(data.id)
+                    $("#p_nombre").val(data.nombre)
+                    $("#p_edad").val(data.edad)
+                    $("#adicion_articulos").slideDown(500)
+                } else {
+                    $("#p_nombre").focus()
+                    $("#p_id").val('')
+                    $("#p_nombre").val('')
+                    $("#p_edad").val('')
+                    $("#adicion_articulos").slideUp(500)
+                }
+            })
         })
 
         var articuloTemplate = twig({
@@ -95,6 +103,7 @@
                     $("#articulos_factura").append(articuloTemplate.render(art))
                     $("#a_nombre").val('').focus()
                     $("#a_cantidad").val('1')
+                    $("#factura :submit").attr('disabled', false)
                 } else {
                     alert('No cantidad')
                 }

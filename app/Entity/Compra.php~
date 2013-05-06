@@ -80,8 +80,6 @@ class Compra
     public function addDescripcione(\Descripcion $descripciones)
     {
         $this->descripciones[] = $descripciones;
-        
-        $descripciones->setCompra($this);
     
         return $this;
     }

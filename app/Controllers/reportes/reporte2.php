@@ -1,7 +1,6 @@
 <?php
 
-require_once './config/bootstrap.php';
-require_once './lib/phplot/phplot.php';
+require_once __DIR__ . '/../../lib/phplot/phplot.php';
 # Configuration:
 # This is the fixed number of points along the X axis:
 $n_rows = 40;

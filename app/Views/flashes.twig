@@ -1,7 +1,5 @@
-<div>
-    {% for type, messages in flash.getMessages() %}
-        {% for message in messages %}
-            {{ bootstrap.alert(message, type) }}
-        {% endfor %}
+{% for type, messages in flash.getMessages() %}
+    {% for message in messages %}
+        {{ bootstrap.alert(message, type) }}
     {% endfor %}
-</div>
+{% endfor %}
