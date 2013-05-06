@@ -4,7 +4,7 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Validator\Validation;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once APP_PATH . '/../vendor/autoload.php';
 
 function request_uri()
 {
@@ -24,7 +24,7 @@ class App
         if (!$twig) {
             $loader = new Twig_Loader_Filesystem(__DIR__ . '/../views/');
             $twig = new Twig_Environment($loader, array(
-                'cache' => __DIR__ . '/cache/twig',
+                'cache' => APP_PATH . '/config/cache/twig',
                 'debug' => DEBUG,
                 'strict_variables' => true,
             ));
@@ -46,20 +46,20 @@ class App
 
         if (!$em) {
 
-            $paths = array(dirname(__DIR__) . "/Entity");
+            $paths = array(APP_PATH . "/Entity/");
 
             $isDevMode = DEBUG;
 
             $dbParams = array(
-                'driver' => 'pdo_mysql',
-                'user' => 'root',
-                'password' => '',
-                'dbname' => 'doctrine2',
+                'driver' => DB_DRIVER,
+                'user' => DB_USER,
+                'password' => DB_PASS,
+                'dbname' => DB_NAME,
             );
 
             $cache = new \Doctrine\Common\Cache\ArrayCache();
             $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-            $config->setProxyDir(__DIR__ . '/cache/Doctrine');
+            $config->setProxyDir(APP_PATH . '/config/cache/Doctrine');
             $config->setProxyNamespace('Proxies');
             $config->setAutoGenerateProxyClasses(DEBUG);
             $em = EntityManager::create($dbParams, $config);

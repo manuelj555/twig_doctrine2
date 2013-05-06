@@ -5,6 +5,13 @@ ob_start();
 define('BASE_URL', 'http://localhost/twig_doctrine2/public/');
 
 define('DEBUG', true);
+define('APP_PATH', dirname(__DIR__) . '/app/');
+
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'doctrine2');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_DRIVER', 'pdo_mysql');
 
 function path($path, array $params = array())
 {
@@ -16,6 +23,6 @@ function path($path, array $params = array())
     }
 }
 
-require_once __DIR__ . '/../app/config/bootstrap.php';
+require_once APP_PATH . '/config/bootstrap.php';
 
-require_once __DIR__ . '/../app/config/app.php';
+require_once APP_PATH . '/config/app.php';
