@@ -6,6 +6,7 @@
 <style type="text/css">
         #factura .row-fluid{margin-bottom: 10px}
         #factura label{width: 100px;text-align: right;margin-right: 10px}
+        #adicion_articulos{display: none}
     </style>
 {% endblock %}
 
@@ -18,7 +19,7 @@
                     <input type="text" name="p[cedula]" id="p_cedula"/>
                     <button class="btn" type="button">Buscar</button>
                 </div>
-                <button type="submit" class="btn btn-primary btn-large pull-right">Facturar</button>
+                <button type="submit" class="btn btn-primary btn-large pull-right" disabled>Facturar</button>
             </div>
         </div>
         <div class="row-fluid">
@@ -28,24 +29,26 @@
             <div class="span12"><label>Edad</label><input name="p[edad]" type="number" id="p_edad" /></div>
         </div>
         <hr/>
-        <div class="row-fluid" >
-            <div class="span12 add_articulo"><label>Articulo</label>
-                <input type="text" id="a_nombre" placeholder="Nombre del Artículo" />
-                <input type="number" id="a_cantidad" placeholder="Cantidad" value="1" class="span2" />
-                <button type="button" class="btn" >Agregar</button>
+        <div id="adicion_articulos">
+            <div class="row-fluid" >
+                <div class="span12"><label>Articulo</label>
+                    <input type="text" id="a_nombre" placeholder="Nombre del Artículo" />
+                    <input type="number" id="a_cantidad" placeholder="Cantidad" value="1" class="span2" />
+                    <button type="button" class="btn" >Agregar</button>
+                </div>
             </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ARTÍCULO</th>
+                        <th>PRECIO</th>
+                        <th>CANTIDAD</th>
+                        <th>SUBTOTAL</th>
+                    </tr>
+                </thead>
+                <tbody id="articulos_factura"></tbody>
+            </table>
         </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ARTÍCULO</th>
-                    <th>PRECIO</th>
-                    <th>CANTIDAD</th>
-                    <th>SUBTOTAL</th>
-                </tr>
-            </thead>
-            <tbody id="articulos_factura"></tbody>
-        </table>
     </form>
 {% endblock %}
 
@@ -58,6 +61,7 @@
                 $("#p_id").val(ui.item[0].id)
                 $("#p_nombre").val(ui.item[0].nombre)
                 $("#p_edad").val(ui.item[0].edad)
+                $("#adicion_articulos").slideDown(500)
             }
         })
 
@@ -67,27 +71,32 @@
 
         $("#a_nombre").autocomplete({
             source: {{ articulos|json_encode|raw }},
-            select: function(ul, ui){
-                
+            select: function(ul, ui) {
+
             }
         })
 
-        $(".add_articulo button").on('click', addArticulo)
+        $("#adicion_articulos button").on('click', addArticulo)
 
         function addArticulo() {
-            console.log($("#a_nombre").data('uiAutocomplete').selectedItem)
-            console.log(parseInt($("#a_cantidad").val()))
             if ($("#a_nombre").data('uiAutocomplete').selectedItem
                     && parseInt($("#a_cantidad").val()) > 0) {
                 var item = $("#a_nombre").data('uiAutocomplete').selectedItem
                 if (item[0].cantidad >= parseInt($("#a_cantidad").val())) {
-                    item[0].cantidad = parseInt($("#a_cantidad").val())
-                    item[0].subTotal = item[0].precio * item[0].cantidad
-                    $("#articulos_factura").append(articuloTemplate.render(item[0]))
+                    var tr = $("[data-id=" + item[0].id + "]")
+                    var art = jQuery.extend({}, item[0])
+                    if (tr.size() == 0) {
+                        art.cantidad = parseInt($("#a_cantidad").val())
+                    } else {
+                        art.cantidad = parseInt($("#a_cantidad").val()) + parseInt(tr.find('input').val())
+                        $("[data-id=" + art.id + "]").remove()
+                    }
+                    art.subTotal = art.precio * art.cantidad
+                    $("#articulos_factura").append(articuloTemplate.render(art))
                     $("#a_nombre").val('').focus()
                     $("#a_cantidad").val('1')
                 } else {
-                    alert('')
+                    alert('No cantidad')
                 }
             }
         }
