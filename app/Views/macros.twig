@@ -16,24 +16,23 @@
 {% endmacro %}
 
 {############################ LINKS ##########################}
-{% macro link(url, text, type, icon, title) %}
-<a title="{{ title|default(text) }}" href="{{ url }}" class="btn btn-{{ type }}">
-{% if icon %}<i class="icon-{{icon}}"></i> {% endif %}{{ text }}</a>
+{% macro link(url, text, type, title) %}
+<a title="{{ title|default(text) }}" href="{{ url }}" class="button radius {{ type }}">{{ text }}</a>
 {% endmacro %}
 
 {% macro edit(url, text) %}
 {% import _self as this %}
-{{ this.link(url, '', 'info', 'edit', text|default('Editar')) }}
+{{ this.link(url, text|default('Editar'), ' small') }}
 {% endmacro %}
 
 {% macro delete(url, text) %}
 {% import _self as this %}
-{{ this.link(url, '', 'danger', 'ban-circle', text|default('Eliminar')) }}
+{{ this.link(url, text|default('Eliminar'), 'alert small') }}
 {% endmacro %}
 
-{% macro cancel(url, text, icon) %}
+{% macro cancel(url, text) %}
 {% import _self as this %}
-{{ this.link(url, text|default('CANCELAR'), 'danger', icon|default('th-list')) }}
+{{ this.link(url, text|default('CANCELAR')) }}
 {% endmacro %}
 
 {% macro add(url, text) %}

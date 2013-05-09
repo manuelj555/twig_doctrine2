@@ -14,10 +14,9 @@ try {
             return require_once $controller . '.php';
         }
     }
+    
+    header("HTTP/1.1 404 Not Found");
 
-    if (!DEBUG) {
-        header("HTTP/1.1 404 Not Found");
-    }
     throw new Exception(sprintf("No existe el archivo <b>%s.php</b> para la URL <b>%s</b>", $controller, request_uri()));
 } catch (Exception $e) {
     ob_get_clean();

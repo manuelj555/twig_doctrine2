@@ -15,7 +15,7 @@
         <input type="hidden" id="p_id" name="p[id]" />
         <div class="row">
             <div class="columns large-2"><label class="right inline">Cédula</label></div>
-            <div class="large-6 columns">
+            <div class="large-6 columns pull-4">
                 <div class="row collapse">
                     <div class="small-8 columns">
                         <input type="text" name="p[cedula]" id="p_cedula" autocomplete="off"/>
@@ -25,28 +25,37 @@
                     </div>
                 </div>
             </div>
-            <div class="large-4 columns">
-                <button type="submit" class="right expand success" disabled>Facturar</button>
-            </div>
         </div>
         <div class="row">
             <div class="columns large-2"><label class="right inline">Nombre</label></div>
-            <div class="large-5 pull-5 columns"><input name="p[nombre]" type="text" id="p_nombre" /></div>
+            <div class="large-6 pull-4 columns"><input name="p[nombre]" type="text" id="p_nombre" /></div>
         </div>
         <div class="row">
             <div class="columns large-2"><label class="right inline">Edad</label></div>
-            <div class="large-5 pull-5 columns"><input name="p[edad]" type="number" id="p_edad" /></div>
+            <div class="large-6 pull-4 columns"><input name="p[edad]" type="number" id="p_edad" /></div>
         </div>
         <hr/>
         <div id="adicion_articulos">
-            <div class="row-fluid" >
-                <div class="span12"><label>Articulo</label>
-                    <input type="text" id="a_nombre" placeholder="Nombre del Artículo" />
-                    <input type="number" id="a_cantidad" placeholder="Cantidad" value="1" class="span2" />
-                    <button type="button" class="btn" >Agregar</button>
+            <div class="row">
+                <div class="columns large-2"><label class="right inline">Artículo</label></div> 
+                <div class="large-6 columns">
+                    <div class="row collapse">
+                        <div class="large-6 columns">
+                            <input type="text" id="a_nombre" placeholder="Nombre del Artículo" />
+                        </div>
+                        <div class="large-3 columns">
+                            <input type="number" id="a_cantidad" placeholder="Cantidad" value="1" class="span2" />
+                        </div>
+                        <div class="large-3 columns">
+                            <button type="button" class="postfix button" >Agregar</button>
+                        </div>
+                    </div>
+                </div> 
+                <div class="columns large-4">
+                    <button type="submit" class="right expand success" disabled>Facturar</button>
                 </div>
             </div>
-            <table class="table">
+            <table style="table">
                 <thead>
                     <tr>
                         <th>ARTÍCULO</th>
