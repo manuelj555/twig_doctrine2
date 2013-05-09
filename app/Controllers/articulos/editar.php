@@ -26,7 +26,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
         header("Location: " . path('articulos'));
         die;
     } catch (LogicException $e) {
-        App::flash()->add('error', $e->getMessage());
+        App::flash()->add('alert', $e->getMessage());
     }
 }
 

@@ -9,7 +9,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/smoothness/jquery-ui-1.10.3.custom.min.css') }}" rel="stylesheet">
         <style type="text/css">
-            .menu a{display: block;margin-bottom: 10px;text-align: left}
+            /*.content{background: none repeat scroll 0 0 #F2F2F2;padding: 10px;border: 1px solid #ccc}*/
         </style>
         {% block stylesheet %}
         {% endblock %}
@@ -17,38 +17,24 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="columns large-12"><h1>{% block titulo "" %}</h1></div>
+                <div class="columns large-12"><h1><a href="{{ path('') }}">{% block titulo "" %}</a></h1></div>
             </div>
             <div class="row">
-                <div class="columns large-3">
-                    <div class="section-container">
-                        <section>
-                            <p class="title"><a href="{{ path('') }}">Nueva Factura</a></p>
-                        </section>
-                        <section>
-                            <p class="title"><a href="{{ path('personas') }}">Listado de Personas</a></p>
-                        </section>
-                        <section>
-                            <p class="title"><a href="{{ path('articulos') }}">Listado de Artículos</a></p>
-                        </section>
-                        <section>
-                            <p class="title"><a href="{{ path('reportes/mascompras') }}">5 Personas con + Gastos</a></p>
-                        </section>
-                    </div>
-                </div>
-                <div class="columns large-9">
+                <div class="columns large-9 content right">
                     {% include "flashes.twig" %}
                     {% block cuerpo %}
                     {% endblock cuerpo %}
                 </div>
+                <div class="columns large-3 left">
+                    {% include "menu.twig" %}                    
+                </div>
             </div>
         </div>
-        <script>
-            document.write('<script src=' +
-            ('__proto__' in {} ? '{{ asset('js/vendor/zepto.js') }}' : '{{ asset('js/vendor/jquery.js') }}<\/script>')
-        </script>
         <script src="{{ asset('js/jquery-1.9.1.min.js') }}"></script>
+        <script src="{{ asset('js/vendor/jquery.js') }}"></script>
+        <script src="{{ asset('js/foundation.min.js') }}"></script>
         <script src="{{ asset('js/jquery-ui-1.10.3.custom.min.js') }}"></script>
+        <script>$(document).foundation()</script>
         {% block javascript %}
         {% endblock %}
     </body>

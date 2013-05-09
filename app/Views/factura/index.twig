@@ -12,30 +12,31 @@
 
 {% block cuerpo %}
     <form method="post" id="factura">
-        <input type="hidden" id="p_id" name="p[id]" />
-        <div class="row">
-            <div class="columns large-2"><label class="right inline">Cédula</label></div>
-            <div class="large-6 columns pull-4">
-                <div class="row collapse">
-                    <div class="small-8 columns">
-                        <input type="text" name="p[cedula]" id="p_cedula" autocomplete="off"/>
-                    </div>
-                    <div class="small-4 columns">
-                        <button class="button postfix" id="buscar_p" type="button">Buscar</button>
+        <fieldset style="margin: 0">
+            <input type="hidden" id="p_id" name="p[id]" />
+            <div class="row">
+                <div class="columns large-2"><label class="right inline">Cédula</label></div>
+                <div class="large-6 columns pull-4">
+                    <div class="row collapse">
+                        <div class="small-8 columns">
+                            <input type="text" name="p[cedula]" id="p_cedula" autocomplete="off"/>
+                        </div>
+                        <div class="small-4 columns">
+                            <button class="button postfix" id="buscar_p" type="button">Buscar</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="columns large-2"><label class="right inline">Nombre</label></div>
-            <div class="large-6 pull-4 columns"><input name="p[nombre]" type="text" id="p_nombre" /></div>
-        </div>
-        <div class="row">
-            <div class="columns large-2"><label class="right inline">Edad</label></div>
-            <div class="large-6 pull-4 columns"><input name="p[edad]" type="number" id="p_edad" /></div>
-        </div>
-        <hr/>
-        <div id="adicion_articulos">
+            <div class="row">
+                <div class="columns large-2"><label class="right inline">Nombre</label></div>
+                <div class="large-6 pull-4 columns"><input name="p[nombre]" type="text" id="p_nombre" /></div>
+            </div>
+            <div class="row">
+                <div class="columns large-2"><label class="right inline">Edad</label></div>
+                <div class="large-6 pull-4 columns"><input name="p[edad]" type="number" id="p_edad" /></div>
+            </div>
+        </fieldset>
+        <fieldset id="adicion_articulos">
             <div class="row">
                 <div class="columns large-2"><label class="right inline">Artículo</label></div> 
                 <div class="large-6 columns">
@@ -55,7 +56,7 @@
                     <button type="submit" class="right expand success" disabled>Facturar</button>
                 </div>
             </div>
-            <table style="table">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>ARTÍCULO</th>
@@ -66,30 +67,37 @@
                 </thead>
                 <tbody id="articulos_factura"></tbody>
             </table>
-        </div>
+        </fieldset>
     </form>
 {% endblock %}
 
 {% block javascript %}
     <script src="{{ asset('js/twig.min.js') }}"></script>
     <script type="text/javascript">
-        $("#buscar_p").on('click', function(event) {
+        $("#buscar_p").on('click', buscarPersona)
+        $("#p_cedula").on('keypress', function(event) {
+            if (event.keyCode == 13) {
+                buscarPersona(event)
+            }
+        })
+
+        function buscarPersona(event) {
             event.preventDefault()
             $.getJSON('{{ path('personas/buscar') }}', {cedula: $("#p_cedula").val()}).done(function(data) {
                 if (data) {
                     $("#p_id").val(data.id)
                     $("#p_nombre").val(data.nombre)
                     $("#p_edad").val(data.edad)
-                    $("#adicion_articulos").slideDown(500)
+                    $("#adicion_articulos").slideDown(500, function(){
+                        $("#a_nombre").focus()                        
+                    })
                 } else {
+                    $(":input").not("#p_cedula").val('')
                     $("#p_nombre").focus()
-                    $("#p_id").val('')
-                    $("#p_nombre").val('')
-                    $("#p_edad").val('')
                     $("#adicion_articulos").slideUp(500)
                 }
             })
-        })
+        }
 
         var articuloTemplate = twig({
             data: "{{ bootstrap.articulo()|escape('js') }}"
