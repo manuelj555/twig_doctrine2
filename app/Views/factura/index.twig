@@ -11,22 +11,31 @@
 {% endblock %}
 
 {% block cuerpo %}
-    <form method="post" class="form-inline" id="factura">
+    <form method="post" id="factura">
         <input type="hidden" id="p_id" name="p[id]" />
-        <div class="row-fluid">
-            <div class="span12">
-                <label>Cédula</label><div class="input-append cedula">
-                    <input type="text" name="p[cedula]" id="p_cedula"/>
-                    <button class="btn" id="buscar_p" type="button">Buscar</button>
+        <div class="row">
+            <div class="columns large-2"><label class="right inline">Cédula</label></div>
+            <div class="large-6 columns">
+                <div class="row collapse">
+                    <div class="small-8 columns">
+                        <input type="text" name="p[cedula]" id="p_cedula" autocomplete="off"/>
+                    </div>
+                    <div class="small-4 columns">
+                        <button class="button postfix" id="buscar_p" type="button">Buscar</button>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-large pull-right" disabled>Facturar</button>
+            </div>
+            <div class="large-4 columns">
+                <button type="submit" class="right expand success" disabled>Facturar</button>
             </div>
         </div>
-        <div class="row-fluid">
-            <div class="span12"><label>Nombre</label><input name="p[nombre]" type="text" id="p_nombre" /></div>
+        <div class="row">
+            <div class="columns large-2"><label class="right inline">Nombre</label></div>
+            <div class="large-5 pull-5 columns"><input name="p[nombre]" type="text" id="p_nombre" /></div>
         </div>
-        <div class="row-fluid">
-            <div class="span12"><label>Edad</label><input name="p[edad]" type="number" id="p_edad" /></div>
+        <div class="row">
+            <div class="columns large-2"><label class="right inline">Edad</label></div>
+            <div class="large-5 pull-5 columns"><input name="p[edad]" type="number" id="p_edad" /></div>
         </div>
         <hr/>
         <div id="adicion_articulos">
