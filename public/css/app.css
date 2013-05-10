@@ -1,1 +1,10 @@
 .table{width: 100%}
+.content{background: #046D6D;border: 1px solid #FFF;box-shadow: 0 0 10px #333;padding: 20px 15px}
+.section-container{box-shadow: 0 0 10px #333}
+.section-container section .title a,#factura label,
+.section-container .section .title a{color: #FFF;font-weight: bold}
+.section-container .section .title,
+.section-container section .title{background-color: #555}
+.section-container section .title:hover,
+.section-container .section .title:hover{background-color: #999}
+#adicion_articulos{display: none}

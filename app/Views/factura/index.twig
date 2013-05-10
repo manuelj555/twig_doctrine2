@@ -2,138 +2,128 @@
 
 {% block titulo 'Nueva Factura' %}
 
-{% block stylesheet %}
-<style type="text/css">
-        #factura .row-fluid{margin-bottom: 10px}
-        #factura label{width: 100px;text-align: right;margin-right: 10px}
-        #adicion_articulos{display: none}
-    </style>
-{% endblock %}
-
 {% block cuerpo %}
-    <form method="post" id="factura">
-        <fieldset style="margin: 0">
-            <input type="hidden" id="p_id" name="p[id]" />
-            <div class="row">
-                <div class="columns large-2"><label class="right inline">Cédula</label></div>
-                <div class="large-6 columns pull-4">
-                    <div class="row collapse">
-                        <div class="small-8 columns">
-                            <input type="text" name="p[cedula]" id="p_cedula" autocomplete="off"/>
-                        </div>
-                        <div class="small-4 columns">
-                            <button class="button postfix" id="buscar_p" type="button">Buscar</button>
-                        </div>
-                    </div>
+<form method="post" id="factura">
+    <input type="hidden" id="p_id" name="p[id]" />
+    <div class="row">
+        <div class="columns large-2"><label class="right inline">Cédula</label></div>
+        <div class="large-6 columns pull-4">
+            <div class="row collapse">
+                <div class="small-8 columns">
+                    <input type="text" name="p[cedula]" id="p_cedula" autocomplete="off"/>
+                </div>
+                <div class="small-4 columns">
+                    <button class="button postfix" id="buscar_p" type="button">Buscar</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="columns large-2"><label class="right inline">Nombre</label></div>
-                <div class="large-6 pull-4 columns"><input name="p[nombre]" type="text" id="p_nombre" /></div>
-            </div>
-            <div class="row">
-                <div class="columns large-2"><label class="right inline">Edad</label></div>
-                <div class="large-6 pull-4 columns"><input name="p[edad]" type="number" id="p_edad" /></div>
-            </div>
-        </fieldset>
-        <fieldset id="adicion_articulos">
-            <div class="row">
-                <div class="columns large-2"><label class="right inline">Artículo</label></div> 
-                <div class="large-6 columns">
-                    <div class="row collapse">
-                        <div class="large-6 columns">
-                            <input type="text" id="a_nombre" placeholder="Nombre del Artículo" />
-                        </div>
-                        <div class="large-3 columns">
-                            <input type="number" id="a_cantidad" placeholder="Cantidad" value="1" class="span2" />
-                        </div>
-                        <div class="large-3 columns">
-                            <button type="button" class="postfix button" >Agregar</button>
-                        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns large-2"><label class="right inline">Nombre</label></div>
+        <div class="large-6 pull-4 columns"><input name="p[nombre]" type="text" id="p_nombre" /></div>
+    </div>
+    <div class="row">
+        <div class="columns large-2"><label class="right inline">Edad</label></div>
+        <div class="large-6 pull-4 columns"><input name="p[edad]" type="number" id="p_edad" /></div>
+    </div>
+    <div id="adicion_articulos">
+        <div class="row">
+            <div class="columns large-2"><label class="right inline">Artículo</label></div> 
+            <div class="large-6 columns">
+                <div class="row collapse">
+                    <div class="large-6 columns">
+                        <input type="text" id="a_nombre" placeholder="Nombre del Artículo" />
                     </div>
-                </div> 
-                <div class="columns large-4">
-                    <button type="submit" class="right expand success" disabled>Facturar</button>
+                    <div class="large-3 columns">
+                        <input type="number" id="a_cantidad" placeholder="Cantidad" value="1" class="span2" />
+                    </div>
+                    <div class="large-3 columns">
+                        <button type="button" class="postfix button" >Agregar</button>
+                    </div>
                 </div>
+            </div> 
+            <div class="columns large-4">
+                <button type="submit" class="right expand success" disabled>Facturar</button>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ARTÍCULO</th>
-                        <th>PRECIO</th>
-                        <th>CANTIDAD</th>
-                        <th>SUBTOTAL</th>
-                    </tr>
-                </thead>
-                <tbody id="articulos_factura"></tbody>
-            </table>
-        </fieldset>
-    </form>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ARTÍCULO</th>
+                    <th>PRECIO</th>
+                    <th>CANTIDAD</th>
+                    <th>SUBTOTAL</th>
+                </tr>
+            </thead>
+            <tbody id="articulos_factura"></tbody>
+        </table>
+    </div>
+</form>
 {% endblock %}
 
 {% block javascript %}
-    <script src="{{ asset('js/twig.min.js') }}"></script>
-    <script type="text/javascript">
-        $("#buscar_p").on('click', buscarPersona)
-        $("#p_cedula").on('keypress', function(event) {
-            if (event.keyCode == 13) {
-                buscarPersona(event)
-            }
-        })
-
-        function buscarPersona(event) {
-            event.preventDefault()
-            $.getJSON('{{ path('personas/buscar') }}', {cedula: $("#p_cedula").val()}).done(function(data) {
-                if (data) {
-                    $("#p_id").val(data.id)
-                    $("#p_nombre").val(data.nombre)
-                    $("#p_edad").val(data.edad)
-                    $("#adicion_articulos").slideDown(500, function(){
-                        $("#a_nombre").focus()                        
-                    })
-                } else {
-                    $(":input").not("#p_cedula").val('')
-                    $("#p_nombre").focus()
-                    $("#adicion_articulos").slideUp(500)
-                }
-            })
+<script src="{{ asset('js/twig.min.js') }}"></script>
+<script type="text/javascript">
+    $("#buscar_p").on('click', buscarPersona)
+    $("#p_cedula").on('keypress', function(event) {
+        if (event.keyCode == 13) {
+            buscarPersona(event)
         }
+    })
 
-        var articuloTemplate = twig({
-            data: "{{ bootstrap.articulo()|escape('js') }}"
-        })
-
-        $("#a_nombre").autocomplete({
-            source: {{ articulos|json_encode|raw }},
-            select: function(ul, ui) {
-
+    function buscarPersona(event) {
+        event.preventDefault()
+        $.getJSON('{{ path('personas/buscar') }}', {cedula: $("#p_cedula").val()}).done(function(data) {
+            if (data) {
+                $("#p_id").val(data.id)
+                $("#p_nombre").val(data.nombre)
+                $("#p_edad").val(data.edad)
+                $("#adicion_articulos").slideDown(500, function() {
+                    $("#a_nombre").focus()
+                })
+            } else {
+                $(":input").not("#p_cedula").val('')
+                $("#p_nombre").focus()
+                $("#adicion_articulos").slideUp(500)
             }
         })
+    }
 
-        $("#adicion_articulos button").on('click', addArticulo)
+    var articuloTemplate = twig({
+        data: "{{ bootstrap.articulo()|escape('js') }}"
+    })
 
-        function addArticulo() {
-            if ($("#a_nombre").data('uiAutocomplete').selectedItem
-                    && parseInt($("#a_cantidad").val()) > 0) {
-                var item = $("#a_nombre").data('uiAutocomplete').selectedItem
-                if (item[0].cantidad >= parseInt($("#a_cantidad").val())) {
-                    var tr = $("[data-id=" + item[0].id + "]")
-                    var art = jQuery.extend({}, item[0])
-                    if (tr.size() == 0) {
-                        art.cantidad = parseInt($("#a_cantidad").val())
-                    } else {
-                        art.cantidad = parseInt($("#a_cantidad").val()) + parseInt(tr.find('input').val())
-                        $("[data-id=" + art.id + "]").remove()
-                    }
-                    art.subTotal = art.precio * art.cantidad
-                    $("#articulos_factura").append(articuloTemplate.render(art))
-                    $("#a_nombre").val('').focus()
-                    $("#a_cantidad").val('1')
-                    $("#factura :submit").attr('disabled', false)
+    $("#a_nombre").autocomplete({
+        source: {{ articulos|json_encode|raw }},
+        select: function(ul, ui) {
+
+        }
+    })
+
+    $("#adicion_articulos button").on('click', addArticulo)
+
+    function addArticulo() {
+        if ($("#a_nombre").data('uiAutocomplete').selectedItem
+                && parseInt($("#a_cantidad").val()) > 0) {
+            var item = $("#a_nombre").data('uiAutocomplete').selectedItem
+            if (item[0].cantidad >= parseInt($("#a_cantidad").val())) {
+                var tr = $("[data-id=" + item[0].id + "]")
+                var art = jQuery.extend({}, item[0])
+                if (tr.size() == 0) {
+                    art.cantidad = parseInt($("#a_cantidad").val())
                 } else {
-                    alert('No cantidad')
+                    art.cantidad = parseInt($("#a_cantidad").val()) + parseInt(tr.find('input').val())
+                    $("[data-id=" + art.id + "]").remove()
                 }
+                art.subTotal = art.precio * art.cantidad
+                $("#articulos_factura").append(articuloTemplate.render(art))
+                $("#a_nombre").val('').focus()
+                $("#a_cantidad").val('1')
+                $("#factura :submit").attr('disabled', false)
+            } else {
+                alert('No cantidad')
             }
         }
-        </script>
+    }
+    </script>
 {% endblock %}
