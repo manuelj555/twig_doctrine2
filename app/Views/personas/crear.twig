@@ -7,19 +7,19 @@
     <div class="row">
         <div class="columns large-2"><label class="inline right">Cédula</label></div>
         <div class="columns large-6 pull-4">
-            <input type="text" name="cedula" value="{{ persona.cedula }}" />
+            {{ form_text('persona.cedula') }}
         </div>
     </div>
     <div class="row">
         <div class="columns large-2"><label class="inline right">Nombre</label></div>
         <div class="columns large-6 pull-4">
-            <input type="text" name="nombre" value="{{ persona.nombre }}" />
+            {{ form_text('persona.nombre') }}
         </div>
     </div>
     <div class="row">
         <div class="columns large-2"><label class="inline right">Edad</label></div>
         <div class="columns large-6 pull-4">
-            <input type="number" name="edad" value="{{ persona.edad }}" />
+            {{ form_number('persona.edad') }}
         </div>
     </div>
     <div class="row">

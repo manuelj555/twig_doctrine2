@@ -8,10 +8,11 @@
         <dl>
             <dd><label>Nombre</label></dd>
             <dt><input type="text" name="nombre" value="{{ articulo.nombre }}" /></dt>
+            <dt>{{ form_text('articulo.nombre') }}</dt>
             <dd><label>Cantidad</label></dd>
-            <dt><input type="number" name="cantidad" value="{{ articulo.cantidad }}" /></dt>
+            <dt>{{ form_number('articulo.cantidad') }}</dt>
             <dd><label>Precio</label></dd>
-            <dt><input type="number"  name="precio" step="0.1" value="{{ articulo.precio }}" /></dt>
+            <dt>{{ form_number('articulo.precio',{step:'0.1'}) }}</dt>
             {% block status '' %}
         </dl>
         {{ bootstrap.submit() }}

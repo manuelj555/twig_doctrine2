@@ -7,7 +7,7 @@ define('BASE_URL', 'http://localhost/twig_doctrine2/public/');
 define('DEBUG', true);
 define('APP_PATH', dirname(__DIR__) . '/app/');
 
-define('DB_HOST', 'localhost');
+define('DB_HOST', '127.0.0.1');
 define('DB_NAME', 'doctrine2');
 define('DB_USER', 'root');
 define('DB_PASS', '');
