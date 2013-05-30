@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "4fe2f531a68f1f27d03c3a9d54872b34",
+    "hash": "57cb00e59b96fb295db7ef5aace53984",
     "packages": [
         {
             "name": "doctrine/common",
@@ -76,16 +76,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "2.3.3"
+                "reference": "2.3.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/2.3.3",
-                "reference": "2.3.3",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/2.3.4",
+                "reference": "2.3.4",
                 "shasum": ""
             },
             "require": {
@@ -135,20 +135,20 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2013-03-24 19:16:29"
+            "time": "2013-05-11 07:45:37"
         },
         {
             "name": "doctrine/orm",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "2.3.3"
+                "reference": "2.3.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/2.3.3",
-                "reference": "2.3.3",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/2.3.4",
+                "reference": "2.3.4",
                 "shasum": ""
             },
             "require": {
@@ -205,7 +205,42 @@
                 "database",
                 "orm"
             ],
-            "time": "2013-03-24 20:43:58"
+            "time": "2013-05-11 07:51:12"
+        },
+        {
+            "name": "k2/twig-extension-form",
+            "version": "dev-master",
+            "target-dir": "K2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/k2framework/twig_extension_form.git",
+                "reference": "3fd356750883e5b31e146c74a316346ad354c552"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/k2framework/twig_extension_form/zipball/3fd356750883e5b31e146c74a316346ad354c552",
+                "reference": "3fd356750883e5b31e146c74a316346ad354c552",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/property-access": "v2.2.1",
+                "twig/twig": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "K2\\": ""
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Manuel Aguirre",
+                    "email": "programador.manuel@gmail.com"
+                }
+            ],
+            "description": "Extensión twig que permite crear campos de formulario",
+            "time": "2013-05-30 03:07:13"
         },
         {
             "name": "symfony/console",
@@ -255,17 +290,75 @@
             "time": "2013-03-19 20:48:08"
         },
         {
-            "name": "twig/twig",
-            "version": "v1.12.3",
+            "name": "symfony/property-access",
+            "version": "v2.2.1",
+            "target-dir": "Symfony/Component/PropertyAccess",
             "source": {
                 "type": "git",
-                "url": "https://github.com/fabpot/Twig.git",
-                "reference": "v1.12.3"
+                "url": "https://github.com/symfony/PropertyAccess.git",
+                "reference": "v2.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.12.3",
-                "reference": "v1.12.3",
+                "url": "https://api.github.com/repos/symfony/PropertyAccess/zipball/v2.2.1",
+                "reference": "v2.2.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\PropertyAccess\\": ""
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony PropertyAccess Component",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "access",
+                "array",
+                "extraction",
+                "index",
+                "injection",
+                "object",
+                "property",
+                "property path",
+                "reflection"
+            ],
+            "time": "2013-03-28 15:37:15"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v1.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabpot/Twig.git",
+                "reference": "v1.13.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.13.0",
+                "reference": "v1.13.0",
                 "shasum": ""
             },
             "require": {
@@ -274,7 +367,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -301,7 +394,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-04-08 12:40:11"
+            "time": "2013-05-10 15:12:43"
         }
     ],
     "packages-dev": [
@@ -311,9 +404,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "k2/twig-extension-form": 20
+    },
     "platform": [
 
     ],

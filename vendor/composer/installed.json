@@ -1,56 +1,5 @@
 [
     {
-        "name": "twig/twig",
-        "version": "v1.12.3",
-        "version_normalized": "1.12.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fabpot/Twig.git",
-            "reference": "v1.12.3"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.12.3",
-            "reference": "v1.12.3",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.4"
-        },
-        "time": "2013-04-08 12:40:11",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.12-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Twig_": "lib/"
-            }
-        },
-        "notification-url": "http://packagist.org/downloads/",
-        "license": [
-            "BSD-3"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Armin Ronacher",
-                "email": "armin.ronacher@active-4.com"
-            }
-        ],
-        "description": "Twig, the flexible, fast, and secure template language for PHP",
-        "homepage": "http://twig.sensiolabs.org",
-        "keywords": [
-            "templating"
-        ]
-    },
-    {
         "name": "doctrine/common",
         "version": "2.3.0",
         "version_normalized": "2.3.0.0",
@@ -171,25 +120,76 @@
         "homepage": "http://symfony.com"
     },
     {
-        "name": "doctrine/dbal",
-        "version": "2.3.3",
-        "version_normalized": "2.3.3.0",
+        "name": "twig/twig",
+        "version": "v1.13.0",
+        "version_normalized": "1.13.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/doctrine/dbal.git",
-            "reference": "2.3.3"
+            "url": "https://github.com/fabpot/Twig.git",
+            "reference": "v1.13.0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/dbal/zipball/2.3.3",
-            "reference": "2.3.3",
+            "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.13.0",
+            "reference": "v1.13.0",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.4"
+        },
+        "time": "2013-05-10 15:12:43",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.13-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Twig_": "lib/"
+            }
+        },
+        "notification-url": "http://packagist.org/downloads/",
+        "license": [
+            "BSD-3"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Armin Ronacher",
+                "email": "armin.ronacher@active-4.com"
+            }
+        ],
+        "description": "Twig, the flexible, fast, and secure template language for PHP",
+        "homepage": "http://twig.sensiolabs.org",
+        "keywords": [
+            "templating"
+        ]
+    },
+    {
+        "name": "doctrine/dbal",
+        "version": "2.3.4",
+        "version_normalized": "2.3.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/dbal.git",
+            "reference": "2.3.4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/dbal/zipball/2.3.4",
+            "reference": "2.3.4",
             "shasum": ""
         },
         "require": {
             "doctrine/common": ">=2.3.0,<2.5-dev",
             "php": ">=5.3.2"
         },
-        "time": "2013-03-24 19:16:29",
+        "time": "2013-05-11 07:45:37",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -237,17 +237,17 @@
     },
     {
         "name": "doctrine/orm",
-        "version": "2.3.3",
-        "version_normalized": "2.3.3.0",
+        "version": "2.3.4",
+        "version_normalized": "2.3.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/doctrine2.git",
-            "reference": "2.3.3"
+            "reference": "2.3.4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/2.3.3",
-            "reference": "2.3.3",
+            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/2.3.4",
+            "reference": "2.3.4",
             "shasum": ""
         },
         "require": {
@@ -259,7 +259,7 @@
         "suggest": {
             "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
         },
-        "time": "2013-03-24 20:43:58",
+        "time": "2013-05-11 07:51:12",
         "bin": [
             "bin/doctrine",
             "bin/doctrine.php"
@@ -306,5 +306,102 @@
             "database",
             "orm"
         ]
+    },
+    {
+        "name": "symfony/property-access",
+        "version": "v2.2.1",
+        "version_normalized": "2.2.1.0",
+        "target-dir": "Symfony/Component/PropertyAccess",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/PropertyAccess.git",
+            "reference": "v2.2.1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/PropertyAccess/zipball/v2.2.1",
+            "reference": "v2.2.1",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2013-03-28 15:37:15",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\PropertyAccess\\": ""
+            }
+        },
+        "notification-url": "http://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony PropertyAccess Component",
+        "homepage": "http://symfony.com",
+        "keywords": [
+            "access",
+            "array",
+            "extraction",
+            "index",
+            "injection",
+            "object",
+            "property",
+            "property path",
+            "reflection"
+        ]
+    },
+    {
+        "name": "k2/twig-extension-form",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "K2",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/k2framework/twig_extension_form.git",
+            "reference": "3fd356750883e5b31e146c74a316346ad354c552"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/k2framework/twig_extension_form/zipball/3fd356750883e5b31e146c74a316346ad354c552",
+            "reference": "3fd356750883e5b31e146c74a316346ad354c552",
+            "shasum": ""
+        },
+        "require": {
+            "symfony/property-access": "v2.2.1",
+            "twig/twig": "1.*"
+        },
+        "time": "2013-05-30 03:07:13",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "K2\\": ""
+            }
+        },
+        "notification-url": "http://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Manuel Aguirre",
+                "email": "programador.manuel@gmail.com"
+            }
+        ],
+        "description": "Extensión twig que permite crear campos de formulario"
     }
 ]

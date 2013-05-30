@@ -6,10 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Twig_' => $vendorDir . '/twig/twig/lib',
-    'Symfony\\Component\\Console\\' => $vendorDir . '/symfony/console',
-    'Doctrine\\ORM' => $vendorDir . '/doctrine/orm/lib',
-    'Doctrine\\DBAL' => $vendorDir . '/doctrine/dbal/lib',
-    'Doctrine\\Common' => $vendorDir . '/doctrine/common/lib',
+    'Twig_' => array($vendorDir . '/twig/twig/lib'),
+    'Symfony\\Component\\PropertyAccess\\' => array($vendorDir . '/symfony/property-access'),
+    'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
+    'K2\\' => array($vendorDir . '/k2/twig-extension-form'),
+    'Doctrine\\ORM' => array($vendorDir . '/doctrine/orm/lib'),
+    'Doctrine\\DBAL' => array($vendorDir . '/doctrine/dbal/lib'),
+    'Doctrine\\Common' => array($vendorDir . '/doctrine/common/lib'),
     '' => array($baseDir . '/app/Entity', $baseDir . '/app/lib'),
 );
