@@ -29,7 +29,7 @@ class Twig_Extension_KuExtension extends Twig_Extension
             new Twig_SimpleFunction('asset', function($file) {
                         return BASE_URL . ltrim($file, '/');
                     }),
-            new Twig_SimpleFunction('*_*', 'helper'),
+            //new Twig_SimpleFunction('*_*', 'helper'),
         );
     }
 

@@ -6,11 +6,11 @@
 <form method="post" id="factura">
     <input type="hidden" id="p_id" name="p[id]" />
     <div class="row">
-        <div class="columns large-2"><label class="right inline">Cédula</label></div>
+        <div class="columns large-2">{{ form_label('p.cedula', 'Cédula') }}</div>
         <div class="large-6 columns pull-4">
             <div class="row collapse">
                 <div class="small-8 columns">
-                    <input type="text" name="p[cedula]" id="p_cedula" autocomplete="off"/>
+                    {{ form_text('p.cedula',{autocomplete:'off'}) }}
                 </div>
                 <div class="small-4 columns">
                     <button class="button postfix" id="buscar_p" type="button">Buscar</button>
@@ -19,12 +19,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="columns large-2"><label class="right inline">Nombre</label></div>
-        <div class="large-6 pull-4 columns"><input name="p[nombre]" type="text" id="p_nombre" /></div>
+        <div class="columns large-2">{{ form_label('p.nombre', 'Nombre') }}</div>
+        <div class="large-6 pull-4 columns">{{ form_text('p.nombre') }}</div>
     </div>
     <div class="row">
-        <div class="columns large-2"><label class="right inline">Edad</label></div>
-        <div class="large-6 pull-4 columns"><input name="p[edad]" type="number" id="p_edad" /></div>
+        <div class="columns large-2">{{ form_label('p.edad', 'Edad') }}</div>
+        <div class="large-6 pull-4 columns">{{ form_text('p.edad') }}</div>
     </div>
     <div id="adicion_articulos">
         <div class="row">
@@ -32,10 +32,10 @@
             <div class="large-6 columns">
                 <div class="row collapse">
                     <div class="large-6 columns">
-                        <input type="text" id="a_nombre" placeholder="Nombre del Artículo" />
+                        {{ form_text('a.nombre',{placeholder:"Nombre del Artículo"}) }}
                     </div>
                     <div class="large-3 columns">
-                        <input type="number" id="a_cantidad" placeholder="Cantidad" value="1" class="span2" />
+                        {{ form_number('a.cantidad',{placeholder:"Cantidad",class:"span2"}, 1) }}
                     </div>
                     <div class="large-3 columns">
                         <button type="button" class="postfix button" >Agregar</button>
