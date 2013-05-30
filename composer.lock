@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "57cb00e59b96fb295db7ef5aace53984",
+    "hash": "aa5e6dddebb1ac40f53df1cbf69a4817",
     "packages": [
         {
             "name": "doctrine/common",
@@ -208,6 +208,46 @@
             "time": "2013-05-11 07:51:12"
         },
         {
+            "name": "k2/container",
+            "version": "dev-master",
+            "target-dir": "K2/Di",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/k2framework/container.git",
+                "reference": "a6a5f8245ce718cac22f1ad8d77ba8763f23f81b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/k2framework/container/zipball/a6a5f8245ce718cac22f1ad8d77ba8763f23f81b",
+                "reference": "a6a5f8245ce718cac22f1ad8d77ba8763f23f81b",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/property-access": "v2.2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "K2\\Di\\": ""
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Manuel Aguirre",
+                    "email": "programador.manuel@gmail.com"
+                }
+            ],
+            "description": "Event Dispatcher de K2Framework",
+            "keywords": [
+                "library event dispatcher"
+            ],
+            "time": "2013-05-29 04:45:06"
+        },
+        {
             "name": "k2/twig-extension-form",
             "version": "dev-master",
             "target-dir": "K2",
@@ -405,6 +445,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "k2/container": 20,
         "k2/twig-extension-form": 20
     },
     "platform": [

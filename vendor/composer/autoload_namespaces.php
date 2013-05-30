@@ -9,6 +9,7 @@ return array(
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'Symfony\\Component\\PropertyAccess\\' => array($vendorDir . '/symfony/property-access'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
+    'K2\\Di\\' => array($vendorDir . '/k2/container'),
     'K2\\' => array($vendorDir . '/k2/twig-extension-form'),
     'Doctrine\\ORM' => array($vendorDir . '/doctrine/orm/lib'),
     'Doctrine\\DBAL' => array($vendorDir . '/doctrine/dbal/lib'),

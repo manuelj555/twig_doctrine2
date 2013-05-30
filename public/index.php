@@ -25,4 +25,6 @@ function path($path, array $params = array())
 
 require_once APP_PATH . '/config/bootstrap.php';
 
+require_once APP_PATH . '/config/services.php';
+
 require_once APP_PATH . '/config/app.php';
