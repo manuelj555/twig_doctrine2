@@ -71,22 +71,6 @@ class App
         return $em;
     }
 
-    /**
-     * 
-     * @staticvar type $validator
-     * @return \Symfony\Component\Validator\ValidatorInterface
-     */
-    public static function validator()
-    {
-        static $validator;
-        if (!$validator) {
-            $validator = Validation::createValidatorBuilder()
-                    ->enableAnnotationMapping()
-                    ->getValidator();
-        }
-        return $validator;
-    }
-
     public static function flash()
     {
         static $flash;
