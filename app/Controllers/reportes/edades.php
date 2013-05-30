@@ -34,5 +34,5 @@ $plot->DrawGraph();
 
 $img = $plot->EncodeImage();
 
-App::twig()->display('reportes/edades.twig', array('img' => $img));
+App::get('twig')->display('reportes/edades.twig', array('img' => $img));
 

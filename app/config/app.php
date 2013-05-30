@@ -20,7 +20,7 @@ try {
     throw new Exception(sprintf("No existe el archivo <b>%s.php</b> para la URL <b>%s</b>", $controller, request_uri()));
 } catch (Exception $e) {
     ob_get_clean();
-    App::twig()->display('errors/exception.twig', array(
+    App::get('twig')->display('errors/exception.twig', array(
         'type' => get_class($e),
         'exception' => $e,
         'base_url' => BASE_URL,

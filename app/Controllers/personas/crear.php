@@ -11,12 +11,12 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     try {
         App::doctrine()->persist($persona);
         App::doctrine()->flush();
-        App::flash()->add('success', "Se creó a {$persona->getNombre()} con exito!!!");
+        App::get('flash')->add('success', "Se creó a {$persona->getNombre()} con exito!!!");
         header("Location: " . path('personas'));
         die;
     } catch (LogicException $e) {
-        App::flash()->add('alert', $e->getMessage());
+        App::get('flash')->add('alert', $e->getMessage());
     }
 }
 
-echo App::twig()->render('personas/crear.twig', array('persona' => $persona));
+echo App::get('twig')->render('personas/crear.twig', array('persona' => $persona));

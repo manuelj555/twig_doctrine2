@@ -18,7 +18,7 @@ class Twig_Extension_KuExtension extends Twig_Extension
     {
         return array(
             'base_url' => BASE_URL,
-            'flash' => App::flash(),
+            'flash' => App::get('flash'),
         );
     }
 

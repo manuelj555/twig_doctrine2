@@ -1,10 +1,6 @@
 <?php
 
-use K2\Twig\Extension\Form;
-use Doctrine\ORM\Tools\Setup;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\Validator\Validation;
-use Symfony\Component\PropertyAccess\PropertyAccessor;
+use K2\Di\Container\Container;
 
 require_once APP_PATH . '/../vendor/autoload.php';
 
@@ -19,23 +15,15 @@ function request_uri()
 
 class App
 {
+    /**
+     *
+     * @var K2\Di\Container\Container
+     */
+    public static $container;
 
-    public static function twig()
+    public static function get($service)
     {
-        static $twig;
-        if (!$twig) {
-            $loader = new Twig_Loader_Filesystem(__DIR__ . '/../views/');
-            $twig = new Twig_Environment($loader, array(
-                'cache' => APP_PATH . '/config/cache/twig',
-                'debug' => DEBUG,
-                'strict_variables' => true,
-            ));
-
-            $twig->addExtension(new Form(new PropertyAccessor()));
-            $twig->addExtension(new Twig_Extension_KuExtension());
-        }
-
-        return $twig;
+        return static::$container->get($service);
     }
 
     /**
@@ -45,41 +33,9 @@ class App
      */
     public static function doctrine()
     {
-        static $em;
-
-        if (!$em) {
-
-            $paths = array(APP_PATH . "/Entity/");
-
-            $isDevMode = DEBUG;
-
-            $dbParams = array(
-                'driver' => DB_DRIVER,
-                'user' => DB_USER,
-                'password' => DB_PASS,
-                'dbname' => DB_NAME,
-            );
-
-            $cache = new \Doctrine\Common\Cache\ArrayCache();
-            $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-            $config->setProxyDir(APP_PATH . '/config/cache/Doctrine');
-            $config->setProxyNamespace('Proxies');
-            $config->setAutoGenerateProxyClasses(DEBUG);
-            $em = EntityManager::create($dbParams, $config);
-        }
-
-        return $em;
+        return static::$container->get('doctrine');
     }
-
-    public static function flash()
-    {
-        static $flash;
-        if (!$flash) {
-            $flash = new Flash();
-        }
-
-        return $flash;
-    }
-
 }
 
+
+App::$container = new Container();

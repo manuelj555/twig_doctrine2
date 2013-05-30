@@ -26,12 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     App::doctrine()->persist($factura);
     App::doctrine()->flush();
 
-    App::flash()->add('success', "Factura guardada");
+    App::get('flash')->add('success', "Factura guardada");
 
     header("Location: " . path(''));die;
 }
 
-App::twig()->display('factura/index.twig', array(
+App::get('twig')->display('factura/index.twig', array(
     'personas' => $personas,
     'articulos' => $articulos,
 ));
