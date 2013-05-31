@@ -4,18 +4,7 @@ $articulo = new Articulo();
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
 
-    $data = filter_input_array(INPUT_POST, array(
-        'nombre' => FILTER_SANITIZE_STRING,
-        'cantidad' => FILTER_SANITIZE_NUMBER_INT,
-        'precio' => array(
-            'filter' => FILTER_SANITIZE_NUMBER_FLOAT,
-            'flags' => FILTER_FLAG_ALLOW_FRACTION
-        ),
-    ));
-
-    $articulo->setNombre($data['nombre']);
-    $articulo->setCantidad($data['cantidad']);
-    $articulo->setPrecio($data['precio']);
+    App::get('mapper')->bind($articulo, $_POST['articulo']);
 
     try {
         App::doctrine()->persist($articulo);
@@ -28,4 +17,4 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     }
 }
 
-echo App::get('twig')->render('articulos/crear.twig', array('articulo' => $articulo));
+App::get('twig')->display('articulos/crear.twig', array('articulo' => $articulo));

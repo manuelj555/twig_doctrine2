@@ -27,7 +27,7 @@ App::$container->set('doctrine', function(){
     return EntityManager::create($dbParams, $config);
 });
 
-App::$container->set('twig', function(){
+App::$container->set('twig', function($c){
     
     $loader = new Twig_Loader_Filesystem(__DIR__ . '/../views/');
     
@@ -37,7 +37,7 @@ App::$container->set('twig', function(){
         'strict_variables' => true,
     ));
 
-    $twig->addExtension(new Form(new PropertyAccessor()));
+    $twig->addExtension(new Form($c['property_accesor']));
     $twig->addExtension(new Twig_Extension_KuExtension());
 
     return $twig;
@@ -45,4 +45,12 @@ App::$container->set('twig', function(){
 
 App::$container->set('flash', function(){
     return new Flash();
+});
+
+App::$container->set('property_accesor', function(){
+    return new PropertyAccessor();
+});
+
+App::$container->set('mapper', function($c){
+    return new \K2\DataMapper\DataMapper($c['property_accesor']);
 });

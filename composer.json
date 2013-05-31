@@ -3,7 +3,8 @@
         "twig/twig": "1.*",
         "doctrine/orm": "2.*",
         "k2/container": "dev-master",
-        "k2/twig-extension-form": "dev-master"
+        "k2/twig-extension-form": "dev-master",
+        "k2/datamapper": "dev-master"
     },
     "autoload": {
         "psr-0": {

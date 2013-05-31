@@ -4,9 +4,7 @@ $persona = App::doctrine()->find('Persona', $_GET['id']);
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
 
-    $persona->setCedula($_POST['cedula']);
-    $persona->setNombre($_POST['nombre']);
-    $persona->setEdad($_POST['edad']);
+    App::get('mapper')->bind($persona, $_POST['persona']);
 
     try {
         App::doctrine()->persist($persona);

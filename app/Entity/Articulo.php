@@ -8,7 +8,7 @@
  * @Entity 
  * 
  */
-class Articulo
+class Articulo implements K2\DataMapper\MapperInterface
 {
 
     const STATUS_INACTIVE = 0;
@@ -51,7 +51,6 @@ class Articulo
      */
     protected $status = self::STATUS_ACTIVE;
 
-
     /**
      * Get id
      *
@@ -71,7 +70,7 @@ class Articulo
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 
@@ -94,7 +93,7 @@ class Articulo
     public function setPrecio($precio)
     {
         $this->precio = $precio;
-    
+
         return $this;
     }
 
@@ -117,7 +116,7 @@ class Articulo
     public function setCantidad($cantidad)
     {
         $this->cantidad = $cantidad;
-    
+
         return $this;
     }
 
@@ -140,7 +139,7 @@ class Articulo
     public function setStatus($status)
     {
         $this->status = $status;
-    
+
         return $this;
     }
 
@@ -153,4 +152,15 @@ class Articulo
     {
         return $this->status;
     }
+
+    public function map(\K2\Datamapper\MapperBuilder $builder, array $options = array())
+    {
+        $builder->add('nombre', array(FILTER_SANITIZE_STRING))
+                ->add('cantidad', array(FILTER_SANITIZE_NUMBER_INT))
+                ->add('precio', array(
+                    FILTER_SANITIZE_NUMBER_FLOAT => array('flags' => FILTER_FLAG_ALLOW_FRACTION)
+                ))
+        ;
+    }
+
 }
