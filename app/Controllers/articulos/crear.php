@@ -5,7 +5,7 @@ $articulo = new Articulo();
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
 
     App::get('mapper')->bind($articulo, $_POST['articulo']);
-
+    
     try {
         App::doctrine()->persist($articulo);
         App::doctrine()->flush();

@@ -153,13 +153,12 @@ class Articulo implements K2\DataMapper\MapperInterface
         return $this->status;
     }
 
-    public function map(\K2\Datamapper\MapperBuilder $builder, array $options = array())
+    public function map(\K2\DataMapper\MapperBuilder $builder, array $options = array())
     {
-        $builder->add('nombre', array(FILTER_SANITIZE_STRING))
-                ->add('cantidad', array(FILTER_SANITIZE_NUMBER_INT))
-                ->add('precio', array(
-                    FILTER_SANITIZE_NUMBER_FLOAT => array('flags' => FILTER_FLAG_ALLOW_FRACTION)
-                ))
+        $builder->sanitizeString('nombre')
+                ->sanitizeEmail('nombre')
+                ->sanitizeInt('cantidad')
+                ->sanitizeFloat('precio')
         ;
     }
 
